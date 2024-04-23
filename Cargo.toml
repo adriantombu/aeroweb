@@ -1,0 +1,13 @@
+[package]
+name = "aeroweb"
+version = "0.1.0"
+edition = "2021"
+authors = ["Adrian Tombu <adrian@otso.fr>"]
+keywords = ["meteo", "meteorology", "aeronautics", "aviation", "metar"]
+categories = ["aerospace", "science::geo", "web-programming"]
+description = "A library to retrieve data from Meteo France's aeronautical meteorologic services"
+license = "GPL-3.0"
+repository = "https://github.com/adriantombu/aeroweb"
+include = ["/src", "LICENSE.md", "README.md"]
+
+[dependencies]
