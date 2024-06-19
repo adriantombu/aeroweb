@@ -1,6 +1,6 @@
 [package]
 name = "aeroweb"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Adrian Tombu <adrian@otso.fr>"]
 keywords = ["meteo", "meteorology", "aeronautics", "aviation", "metar"]
@@ -11,3 +11,6 @@ repository = "https://github.com/adriantombu/aeroweb"
 include = ["/src", "LICENSE.md", "README.md"]
 
 [dependencies]
+quick-xml = { version = "0.32.0", features = ["serialize"] }
+serde = { version = "1.0", features = ["derive"] }
+thiserror = "1.0.61"
