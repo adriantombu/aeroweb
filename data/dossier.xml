@@ -1,0 +1,678 @@
+
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<dossier id="CHINE" lienPDF="/FR/aviation/affiche_dossier_preetabli.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uGXZZaXtdWt">
+<message type="METAR" oaci="LFPG" nom="PARIS CHARLES DE GAULLE"><texte><![CDATA[METAR LFPG 232030Z 29005KT CAVOK 08/M01 Q1019 NOSIG=]]></texte></message>
+<message type="TAFL" oaci="LFPG" nom="PARIS CHARLES DE GAULLE"><texte><![CDATA[TAF LFPG 231700Z 2318/2424 36010KT CAVOK TX11/2414Z TN03/2424Z
+PROB30 TEMPO 2400/2403 4000 -RA BKN014
+TEMPO 2410/2416 32015G25KT 4000 -SHRA SCT030TCU=]]></texte></message>
+<message type="METAR" oaci="LFPO" nom="PARIS ORLY"><texte><![CDATA[METAR LFPO 232000Z 36004KT 330V050 CAVOK 08/M01 Q1019 NOSIG=]]></texte></message>
+<message type="TAFL" oaci="LFPO" nom="PARIS ORLY"><texte><![CDATA[TAF LFPO 231700Z 2318/2424 35010KT CAVOK PROB30 TEMPO 2401/2406
+BKN012 PROB40 TEMPO 2410/2416 33015G25KT=]]></texte></message>
+<message type="METAR" oaci="LDZA" nom="ZAGREB / PLESO"><texte><![CDATA[METAR LDZA 232000Z 28004KT 250V330 9999 -RA FEW003 OVC020 06/06 Q1007
+TEMPO RA BKN006=]]></texte></message>
+<message type="TAFL" oaci="LDZA" nom="ZAGREB / PLESO"><texte><![CDATA[TAF LDZA 231725Z 2318/2418 34006KT 9999 BKN025 TX09/2412Z TN06/2404Z
+TEMPO 2318/2322 RA
+PROB30 TEMPO 2322/2408 RA BKN012
+BECMG 2408/2410 04006KT=]]></texte></message>
+<message type="METAR" oaci="LCPH" nom="PAFOS INTL"><texte><![CDATA[METAR LCPH 232000Z AUTO 35002KT 9999 NCD 19/14 Q1015 NOSIG=]]></texte></message>
+<message type="TAFL" oaci="LCPH" nom="PAFOS INTL"><texte><![CDATA[TAF LCPH 231730Z 2318/2418
+05006KT CAVOK PROB30 TEMPO 2318/2418 5000 DU BECMG 2403/2406
+ 12016KT BECMG 2416/2418 05006KT=]]></texte></message>
+<message type="METAR" oaci="LCLK" nom="LARNAKA INTL"><texte><![CDATA[METAR LCLK 232000Z 04004KT CAVOK 20/14 Q1015 NOSIG=]]></texte></message>
+<message type="TAFL" oaci="LCLK" nom="LARNAKA INTL"><texte><![CDATA[TAF LCLK 231730Z 2318/2418 01006KT CAVOK PROB30 TEMPO 2318/2418
+ 5000 DU BECMG 2409/2411 11010KT BECMG 2416/2418 02006KT=]]></texte></message>
+<message type="METAR" oaci="LBSF" nom="SOFIA"><texte><![CDATA[METAR LBSF 232000Z AUTO 12014KT 9999 FEW015/// OVC019/// 12/09 Q1006
+NOSIG=]]></texte></message>
+<message type="TAFL" oaci="LBSF" nom="SOFIA"><texte><![CDATA[TAF LBSF 231700Z 2318/2418 11012KT 7000 SCT015 BKN040 TEMPO
+         2318/2401 3000 DZ BR SCT005 BKN010 BECMG 2401/2402 VRB04KT
+         1500 BR SCT007 BKN012 TEMPO 2402/2405 0600 BCFG SCT003
+         BKN010 BECMG 2408/2410 36008KT 9999 SCT040 PROB40 TEMPO
+         2411/2417 5000 SHRA FEW025CB BKN040=]]></texte></message>
+<message type="GAMET" oaci="LBSR" nom="FIR SOFIA"><texte><![CDATA[LBSR GAMET VALID 231800/232400 LBSF-
+LBSR SOFIA FIR /1 BLW FL150
+SECN I
+SFC VIS: 4000M RA E OF E025
+MT OBSC: GLOBALLY
+SIG CLD: 21/24 BKN 500/1500 FT AGL
+ICE: MOD ICE ABV FL085
+TURB: MOD TURB ABV FL050
+SECN II
+PSYS: 18 L1005
+SFC WIND: 20KT
+WIND/T:
+ 2000 FT NIL KT NIL
+ 5000 FT 140/28 KT PS07
+10000 FT 200/60 KT PS02
+CLD: SCT/BKN/OVC SC/CU/AC/NS 1600/20000 FT AGL
+FZLVL:  9600 FT AMSL
+MNM QNH: 1002 HPA
+VA: NIL=]]></texte></message>
+<message type="METAR" oaci="EDDM" nom="MUENCHEN"><texte><![CDATA[METAR EDDM 232020Z AUTO 26005KT 9999 -RA BKN022 OVC027 03/01 Q1013
+NOSIG=]]></texte></message>
+<message type="TAFL" oaci="EDDM" nom="MUENCHEN"><texte><![CDATA[TAF EDDM 231700Z 2318/2424 33003KT 9999 OVC030 BECMG 2405/2407
+     26008KT TEMPO 2412/2424 SHRA BKN020CB PROB30 TEMPO 2414/2420
+     29015G25KT 4000 TSRAGS BKN014 BKN020CB=]]></texte></message>
+<message type="METAR" oaci="LOWW" nom="WIEN-SCHWECHAT"><texte><![CDATA[METAR LOWW 232020Z 33011KT 9999 FEW040 OVC042 07/03 Q1010 NOSIG=]]></texte></message>
+<message type="TAFL" oaci="LOWW" nom="WIEN-SCHWECHAT"><texte><![CDATA[TAF LOWW 232015Z 2321/2503 33012KT 8000 -RA FEW012 BKN040
+    TX07/2413Z TN04/2405Z
+    TEMPO 2403/2408 RA BKN012
+    TEMPO 2403/2417 32017G27KT
+    BECMG 2410/2412 NSW
+    TEMPO 2411/2421 -RA
+    FM241900 29010KT 9999 SCT030=]]></texte></message>
+<message type="GAMET" oaci="LOVV" nom="WIEN"><texte><![CDATA[LOVV BALLOON-GAMET VALID 231600/232200 LOWW-
+LOVV WIEN FIR / DANUBE AREA BLW FL200
+VALID FOR ALL REGIONS N/NE OF ALPS FROM FLACHGAU/INNVIERTEL TO
+NORD/MITTELBURGENLAND AND MARIAZELLERLAND
+SFC WSPD: 16/22 WDSPR N MAX 15KT E OF SANKT POELTEN
+TURB:     NIL
+SIG INV:  NIL
+SIGMET APPLICABLE AT TIME OF ISSUE: NIL
+PLEASE REFER TO LOW-LEVEL SWC ALPS FOR INFORMATION ON VMC/IMC,
+TCU/CB, PRECIPITATION AND TO UPPER WIND/TEMPERATURE CHARTS FOR
+ADDITIONAL INFORMATION=]]></texte></message>
+<message type="METAR" oaci="LSZH" nom="ZURICH"><texte><![CDATA[METAR LSZH 232020Z VRB01KT 9999 -RA SCT030 BKN055 03/02 Q1015 NOSIG=]]></texte></message>
+<message type="TAFL" oaci="LSZH" nom="ZURICH"><texte><![CDATA[TAF LSZH 231725Z 2318/2424 14004KT 9999 FEW020 SCT045 BKN050
+     TX08/2415Z TNM00/2403Z PROB30 2402/2407 2000 BCFG NSC BECMG
+     2409/2411 26012KT TEMPO 2411/2418 30015G28KT SHRA BECMG
+     2418/2421 23005KT=]]></texte></message>
+<message type="METAR" oaci="LTAC" nom="ANKARA/ESENBOGA"><texte><![CDATA[METAR LTAC 231950Z 07005KT 010V100 CAVOK 18/05 Q1018 NOSIG=]]></texte></message>
+<message type="TAFL" oaci="LTAC" nom="ANKARA/ESENBOGA"><texte><![CDATA[TAF LTAC 231640Z 2318/2418 VRB02KT CAVOK BECMG 2406/2408 18015KT
+FEW040 BKN180 TEMPO 2408/2412 18025G35KT TEMPO 2412/2416 18020G30KT=]]></texte></message>
+<message type="METAR" oaci="LYBE" nom="BEOGRAD / NIKOLA TESLA"><texte><![CDATA[METAR LYBE 232000Z 12006KT 090V150 9999 BKN012 BKN027 11/09 Q1005
+NOSIG=]]></texte></message>
+<message type="TAFL" oaci="LYBE" nom="BEOGRAD / NIKOLA TESLA"><texte><![CDATA[TAF LYBE 231700Z 2318/2418 09008KT 9999 SCT010 BKN030 TX16/2412Z
+         TN07/2404Z TEMPO 2318/2321 5000 RA BKN008 BKN030 BECMG
+         2323/2401 3000 BR BKN002 TEMPO 2401/2405 0500 FG BECMG
+         2406/2408 27010KT 9999 NSW SCT025 TEMPO 2412/2416
+         27015G25KT 4000 TSRA SCT030CB SCT040=]]></texte></message>
+<message type="AIRMET" oaci="LYBA" nom="BEOGRAD"><texte><![CDATA[LYBA AIRMET 16 VALID 231925/232325 LYBE-
+LYBA BEOGRAD FIR MT OBSC OBS S OF LINE N4425 E01900 - N4445 E02200
+AND N OF LINE N4205 E02215 - N4350 E01910 ABV 3000FT STNR WKN=]]></texte></message>
+<message type="AIRMET" oaci="LYBA" nom="BEOGRAD"><texte><![CDATA[LYBA AIRMET 15 VALID 231915/232215 LYBE-
+LYBA BEOGRAD FIR MOD ICE FCST N OF LINE N4555 E01854 - N4250 E02150
+- N4346 E02223 FL080/150 MOV N WKN=]]></texte></message>
+<message type="METAR" oaci="OBBI" nom="BAHRAIN INTERNATIONAL"><texte><![CDATA[METAR OBBI 232000Z 25004KT CAVOK 28/12 Q1007 NOSIG=]]></texte></message>
+<message type="TAFL" oaci="OBBI" nom="BAHRAIN INTERNATIONAL"><texte><![CDATA[TAF OBBI 231700Z 2318/2500 31011KT CAVOK BECMG 2414/2416 VRB05KT=]]></texte></message>
+<message type="METAR" oaci="OJAM" nom="AMMAN/MARKA INTL"><texte><![CDATA[METAR OJAM 232000Z 00000KT 5000 HZ NSC 24/01 Q1020 NOSIG=]]></texte></message>
+<message type="TAFL" oaci="OJAM" nom="AMMAN/MARKA INTL"><texte><![CDATA[TAF OJAM 231050Z 2312/2418 10008KT 5000 HZ NSC
+      PROB30 2312/2318 14015KT 4000 BLDU
+      TEMPO 2409/2415 12016KT 3000 BLDU=]]></texte></message>
+<message type="METAR" oaci="OMSJ" nom="SHARJAH / INTERNATIONAL"><texte><![CDATA[METAR OMSJ 232000Z 24006KT CAVOK 27/21 Q1006 NOSIG=]]></texte></message>
+<message type="TAFL" oaci="OMSJ" nom="SHARJAH / INTERNATIONAL"><texte><![CDATA[TAF OMSJ 231700Z 2318/2500 27010KT 8000 NSC
+         BECMG 2319/2321 20008KT
+         PROB30 2400/2404 3000 BR
+         BECMG 2406/2408 27012KT
+         BECMG 2416/2418 19005KT=]]></texte></message>
+<message type="METAR" oaci="OPKC" nom="KARACHI / JINNAH INTERNATIONAL"><texte><![CDATA[METAR OPKC 232030Z 26004KT 6000 NSC 25/21 Q1007 NOSIG=]]></texte></message>
+<message type="TAFL" oaci="OPKC" nom="KARACHI / JINNAH INTERNATIONAL"><texte><![CDATA[TAF OPKC 231700Z 2318/2424 31008KT 6000 NSC TEMPO 2401/2405 27005KT
+5000 HZ NSC
+FM240500 27007G17KT 7000 NSC BECMG 2418/2420 29010KT 5000 HZ NSC=]]></texte></message>
+<message type="METAR" oaci="OPLA" nom="ALLAMA IQBAL INTERNATIONAL"><texte><![CDATA[METAR OPLA 232025Z 00000KT 4000 FU SCT100 24/16 Q1006
+                    NOSIG RMK QFE981 A29.72=]]></texte></message>
+<message type="TAFL" oaci="OPLA" nom="ALLAMA IQBAL INTERNATIONAL"><texte><![CDATA[TAF OPLA 231700Z 2318/2424 03010KT 4000 FU SCT040 BKN100 TX35/2410Z
+    TN18/2401Z PROB30 TEMPO 2318/2320 35015G40KT 2000 TSRA FEW030CB
+     FM240600 34010KT 6000 SCT100 FM241800 03010KT 4000 FU SCT100=]]></texte></message>
+<message type="SIGMET" oaci="OPLR" nom="LAHORE"><texte><![CDATA[OPLR SIGMET 05 VALID 231700/232100 OPLA-
+OPLR LAHORE FIR ISOL TS OBS N OF N32 AND E OF E071 MOV NE NC=]]></texte></message>
+<message type="METAR" oaci="OSDI" nom="DAMASCUS / INTL"><texte><![CDATA[METAR OSDI 232000Z 05005KT CAVOK 20/02 Q1019=]]></texte></message>
+<message type="TAFL" oaci="OSDI" nom="DAMASCUS / INTL"><texte><![CDATA[TAF OSDI 231800Z 2318/2424 06006KT CAVOK=]]></texte></message>
+<message type="METAR" oaci="ZBAA" nom="BEIJING / CAPITAL"><texte><![CDATA[METAR ZBAA 232000Z VRB01MPS CAVOK 06/06 Q1009 NOSIG=]]></texte></message>
+<message type="TAFL" oaci="ZBAA" nom="BEIJING / CAPITAL"><texte><![CDATA[TAF ZBAA 231500Z 2318/2418 19003MPS CAVOK TX25/2407Z TN08/2321Z=]]></texte></message>
+<message date_reception='20240423190000' type='VAA' oaci='ADRM' nom='DARWIN'><texte><![CDATA[VA ADVISORY
+DTG: 20240423/1900Z
+VAAC: DARWIN
+VOLCANO: DUKONO 268010
+PSN: N0142 E12754
+AREA: INDONESIA
+SUMMIT ELEV: 1229M
+ADVISORY NR: 2024/430
+INFO SOURCE: HIMAWARI-9
+AVIATION COLOUR CODE: ORANGE
+ERUPTION DETAILS: VA TO FL090 LAST OBS AT 23/0630Z MOV NW
+EST VA DTG: 23/1840Z
+EST VA CLD: SFC/FL090 N0143 E12755 - N0140 E12755 - N0140
+        E12716 - N0158 E12719 MOV W 10KT
+FCST VA CLD +6 HR: 24/0040Z SFC/FL090 N0143 E12755 - N0140
+        E12755 - N0142 E12713 - N0200 E12717
+FCST VA CLD +12 HR: 24/0640Z SFC/FL090 N0143 E12755 - N0140
+        E12755 - N0144 E12713 - N0203 E12718
+FCST VA CLD +18 HR: 24/1240Z SFC/FL090 N0143 E12755 - N0140
+        E12755 - N0144 E12713 - N0203 E12718
+RMK: VA CURRENTLY OBSCURED BY MET CLOUD. VA HEIGHT AND
+        MOVEMENT BASED ON MODEL GUIDANCE AND HIMAWARI-9 IMAGERY.
+NXT ADVISORY: NO LATER THAN 20240424/0100Z=]]></texte></message>
+<message date_reception='20240423183000' type='VAA' oaci='ADRM' nom='DARWIN'><texte><![CDATA[VA ADVISORY
+DTG: 20240423/1830Z
+VAAC: DARWIN
+VOLCANO: SEMERU 263300
+PSN: S0806 E11255
+AREA: INDONESIA
+SUMMIT ELEV: 3657M
+ADVISORY NR: 2024/346
+INFO SOURCE: HIMAWARI-9, CVGHM, WEBCAM
+AVIATION COLOUR CODE: ORANGE
+ERUPTION DETAILS: ERUPTION REPORTED AT 23/1234Z
+EST VA DTG: 23/1810Z
+EST VA CLD: SFC/FL140 S0810 E11257 - S0811 E11242 - S0756
+        E11245 - S0801 E11259 MOV W 05KT
+FCST VA CLD +6 HR: 24/0010Z NO VA EXP
+FCST VA CLD +12 HR: 24/0610Z NO VA EXP
+FCST VA CLD +18 HR: 24/1210Z NO VA EXP
+RMK: ERUPTION REPORTED BUT NO HEIGHT WAS GIVEN. AREA
+        OBSCURED BY MET CLOUD. VA HEIGHT ESTIMATED FROM RECENT
+        BEHAVIOUR. ERUPTION LIKELY TO DISSIPATE IN 6HRS.
+NXT ADVISORY: NO LATER THAN 20240424/0030Z=]]></texte></message>
+<message date_reception='20240423130200' type='VAA' oaci='ADRM' nom='DARWIN'><texte><![CDATA[VA ADVISORY
+DTG: 20240423/1302Z
+VAAC: DARWIN
+VOLCANO: SEMERU 263300
+PSN: S0806 E11255
+AREA: INDONESIA
+SUMMIT ELEV: 3657M
+ADVISORY NR: 2024/345
+INFO SOURCE: HIMAWARI-9, CVGHM, WEBCAM
+AVIATION COLOUR CODE: ORANGE
+ERUPTION DETAILS: ERUPTION REPORTED AT 23/1234Z
+EST VA DTG: 23/1250Z
+EST VA CLD: SFC/FL140 S0810 E11257 - S0812 E11243 - S0803
+        E11242 - S0755 E11250 - S0804 E11259 MOV W 05KT
+FCST VA CLD +6 HR: 23/1850Z SFC/FL140 S0810 E11257 - S0811
+        E11242 - S0756 E11245 - S0801 E11259
+FCST VA CLD +12 HR: 24/0050Z NO VA EXP
+FCST VA CLD +18 HR: 24/0650Z NO VA EXP
+RMK: ERUPTION REPORTED BUT NO HEIGHT WAS GIVEN. AREA
+        OBSCURED BY MET CLOUD. HEIGHT ESTIMATED FROM RECENT
+        BEHAVIOUR, OBS POLYGON ESTIMATED. ERUPTION ASSUMED DISCRETE
+        SO LIKELY TO DISSIPATE IN 12HRS.
+NXT ADVISORY: NO LATER THAN 20240423/1902Z=]]></texte></message>
+<message date_reception='20240423130000' type='VAA' oaci='ADRM' nom='DARWIN'><texte><![CDATA[VA ADVISORY
+DTG: 20240423/1300Z
+VAAC: DARWIN
+VOLCANO: DUKONO 268010
+PSN: N0142 E12754
+AREA: INDONESIA
+SUMMIT ELEV: 1229M
+ADVISORY NR: 2024/429
+INFO SOURCE: HIMAWARI-9
+AVIATION COLOUR CODE: ORANGE
+ERUPTION DETAILS: VA TO FL090 MOV NW LAST OBS AT 23/0630Z
+OBS VA DTG: 23/1240Z
+OBS VA CLD: SFC/FL090 N0143 E12756 - N0140 E12755 - N0143
+        E12714 - N0200 E12721 MOV NW 10KT
+FCST VA CLD +6 HR: 23/1840Z SFC/FL090 N0143 E12756 - N0140
+        E12755 - N0143 E12710 - N0202 E12718
+FCST VA CLD +12 HR: 24/0040Z SFC/FL090 N0143 E12756 - N0140
+        E12755 - N0143 E12710 - N0202 E12717
+FCST VA CLD +18 HR: 24/0640Z SFC/FL090 N0143 E12756 - N0140
+        E12755 - N0143 E12710 - N0202 E12718
+RMK: VA CURRENTLY OBSCURED BY MET CLOUD. VA HEIGHT AND
+        MOVEMENT BASED ON MODEL GUIDANCE AND HIMAWARI-9 IMAGERY.
+NXT ADVISORY: NO LATER THAN 20240423/1900Z=]]></texte></message>
+<message date_reception='20240423195200' type='VAA' oaci='RJTD' nom='TOKYO'><texte><![CDATA[VA ADVISORY
+DTG: 20240423/1952Z
+VAAC: TOKYO
+VOLCANO: SHEVELUCH 300270
+PSN: N5639 E16122
+AREA: RUSSIA
+SUMMIT ELEV: 3283M
+ADVISORY NR: 2024/34
+INFO SOURCE: HIMAWARI-9
+AVIATION COLOUR CODE: NIL
+ERUPTION DETAILS: NO ERUPTION. RE-SUSPENDED VA
+OBS VA DTG: 23/1920Z
+OBS VA CLD: SFC/FL120 N5644 E16124 - N5624 E16146 - N5619 E16129 -
+N5636 E16117 MOV SE 30KT
+FCST VA CLD +6 HR: 24/0120Z SFC/FL120 N5248 E16434 - N5310 E16319 -
+N5519 E16225 - N5639 E16122 - N5548 E16231
+FCST VA CLD +12 HR: 24/0720Z SFC/FL120 N4938 E16824 - N4947 E16648 -
+N5639 E16122 - N5509 E16351
+FCST VA CLD +18 HR: NO VA EXP
+RMK: RE-SUSPENDED VA. THIS RELATES TO ASH DRIFTING FROM THE GROUND
+RATHER THAN TO ASH FROM A NEW ERUPTION.
+NXT ADVISORY: 20240424/0000Z=]]></texte></message>
+<message date_reception='NIL' type='VAA' oaci='LFPW' nom='TOULOUSE'><texte><![CDATA[NIL]]></texte></message>
+<message date_reception='NIL' type='TCA' oaci='RJTD' nom='TOKYO'><texte><![CDATA[NIL]]></texte></message>
+<message date_reception='NIL' type='TCA' oaci='VIDP' nom='NEW DELHI'><texte><![CDATA[NIL]]></texte></message>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL450</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl450&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL450</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 21:00</date_run>
+<date_echeance>20240423210000</date_echeance>
+<echeance>21 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl450&echeance=20240423210000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL450</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl450&echeance=20240424000000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL410</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl410&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL410</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 21:00</date_run>
+<date_echeance>20240423210000</date_echeance>
+<echeance>21 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl410&echeance=20240423210000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL410</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl410&echeance=20240424000000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL390</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl390&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL390</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 21:00</date_run>
+<date_echeance>20240423210000</date_echeance>
+<echeance>21 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl390&echeance=20240423210000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL390</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl390&echeance=20240424000000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL360</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl360&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL360</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 21:00</date_run>
+<date_echeance>20240423210000</date_echeance>
+<echeance>21 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl360&echeance=20240423210000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL360</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl360&echeance=20240424000000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL340</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl340&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL340</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 21:00</date_run>
+<date_echeance>20240423210000</date_echeance>
+<echeance>21 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl340&echeance=20240423210000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL340</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl340&echeance=20240424000000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL320</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl320&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL320</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 21:00</date_run>
+<date_echeance>20240423210000</date_echeance>
+<echeance>21 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl320&echeance=20240423210000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL320</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl320&echeance=20240424000000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL300</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl300&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL300</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 21:00</date_run>
+<date_echeance>20240423210000</date_echeance>
+<echeance>21 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl300&echeance=20240423210000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL300</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl300&echeance=20240424000000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL270</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl270&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL270</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 21:00</date_run>
+<date_echeance>20240423210000</date_echeance>
+<echeance>21 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl270&echeance=20240423210000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL270</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl270&echeance=20240424000000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL240</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl240&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL240</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 21:00</date_run>
+<date_echeance>20240423210000</date_echeance>
+<echeance>21 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl240&echeance=20240423210000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL240</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl240&echeance=20240424000000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL210</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl210&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL210</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 21:00</date_run>
+<date_echeance>20240423210000</date_echeance>
+<echeance>21 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl210&echeance=20240423210000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL210</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl210&echeance=20240424000000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL180</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl180&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL180</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 21:00</date_run>
+<date_echeance>20240423210000</date_echeance>
+<echeance>21 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl180&echeance=20240423210000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL180</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl180&echeance=20240424000000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL140</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl140&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL140</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 21:00</date_run>
+<date_echeance>20240423210000</date_echeance>
+<echeance>21 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl140&echeance=20240423210000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL140</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl140&echeance=20240424000000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL100</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl100&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL100</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 21:00</date_run>
+<date_echeance>20240423210000</date_echeance>
+<echeance>21 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl100&echeance=20240423210000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL100</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl100&echeance=20240424000000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL80</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl080&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL80</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 21:00</date_run>
+<date_echeance>20240423210000</date_echeance>
+<echeance>21 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl080&echeance=20240423210000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL80</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl080&echeance=20240424000000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL50</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl050&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL50</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 21:00</date_run>
+<date_echeance>20240423210000</date_echeance>
+<echeance>21 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl050&echeance=20240423210000]]></lien>
+</carte>
+<carte>
+<typecarte>WINTEM</typecarte>
+<niveau>FL50</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=wintemp/uk/smpz_g/fl050&echeance=20240424000000]]></lien>
+</carte>
+<carte>
+<typecarte>TEMSI</typecarte>
+<niveau>FL250-630</niveau>
+<zone>MID G</zone>
+<date_run>23 04 2024 18:00</date_run>
+<date_echeance>20240423180000</date_echeance>
+<echeance>18 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=sigwx/uk/smpz_g&echeance=20240423180000]]></lien>
+</carte>
+<carte>
+<typecarte>TEMSI</typecarte>
+<niveau>FL250-630</niveau>
+<zone>MID G</zone>
+<date_run>24 04 2024 00:00</date_run>
+<date_echeance>20240424000000</date_echeance>
+<echeance>00 UTC</echeance>
+<lien><![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=sigwx/uk/smpz_g&echeance=20240424000000]]></lien>
+</carte>
+<VAG date_reception='20240423130000' oaci='ADRM' nom='DARWIN' >
+<lien><![CDATA[/FR/aviation/affiche_vagtcag.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=vag/adrm&echeance=20240423130000]]></lien>
+</VAG>
+<VAG date_reception='20240423180000' oaci='ADRM' nom='DARWIN' >
+<lien><![CDATA[/FR/aviation/affiche_vagtcag.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=vag/adrm&echeance=20240423180000]]></lien>
+</VAG>
+<VAG date_reception='20240423195200' oaci='RJTD' nom='TOKYO' >
+<lien><![CDATA[/FR/aviation/affiche_vagtcag.php?login=ebO5r6yBvHOOh7AK4GqcYWdrlmhiYm3d1uE%3D&layer=vag/rjtd&echeance=20240423195200]]></lien>
+</VAG>
+<VAG date_reception='NIL' oaci='LFPW' nom='TOULOUSE' >
+<lien><![CDATA[NIL]]></lien>
+</VAG>
+<TCAG date_reception='NIL' oaci='RJTD' nom='TOKYO' >
+<lien><![CDATA[NIL]]></lien>
+</TCAG>
+<TCAG date_reception='NIL' oaci='DEMS' nom='NEW DELHI' >
+<lien><![CDATA[NIL]]></lien>
+</TCAG>
+</dossier>
