@@ -1,7 +1,7 @@
 use thiserror::Error;
 
 #[derive(Error, Debug)]
-pub enum AerowebError {
+pub enum Aeroweb {
     #[error("Unable to deserialize data")]
     Deserialize(#[from] quick_xml::de::DeError),
 }

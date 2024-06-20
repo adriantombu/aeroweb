@@ -1,26 +1,34 @@
-use crate::types::error::AerowebError;
+use crate::error::Aeroweb;
+use crate::helpers::de_linkify;
 use serde::{Deserialize, Serialize};
 
-/// Ce type de requête permet de récupérer des cartes aéronautiques (TEMSI et WINTEM).
+/// Retrieves a list of aeronautical maps (TEMSI et WINTEM).
+// Definition file : https://aviation.meteo.fr/FR/aviation/XSD/cartes.xsd
 // pub fn fetch_cartes() -> Result<Cartes, AerowebError> {}
 
-pub fn parse_cartes(xml: &str) -> Result<Cartes, AerowebError> {
-    quick_xml::de::from_str(xml).map_err(AerowebError::Deserialize)
+/// Parses the XML string into a `Cartes` struct.
+///
+/// # Errors
+///
+/// Returns an error if the XML string cannot be parsed.
+///
+pub fn parse(xml: &str) -> Result<Cartes, Aeroweb> {
+    quick_xml::de::from_str(xml).map_err(Aeroweb::Deserialize)
 }
 
 #[derive(Debug, Default, Serialize)]
-pub struct CartesOptions {
-    /// Si la valeur est oui, les paramètres suivants deviennent optionnels.
+pub struct Options {
+    /// If the value is `BaseComplete::Oui`, the following parameters are optional.
     base_complete: BaseComplete,
 
-    /// Pas nécessaire lorsque le paramètre base_complete vaut oui.
+    /// Useless if `base_complete` is `BaseComplete::Oui`.
     vue_carte: VueCarte,
 
-    /// Pas nécessaire lorsque le paramètre vue_carte vaut `VueCarte::AeroTemsi`.
-    /// Pas nécessaire lorsque le paramètre base_complete vaut `BaseComplete::Oui`.
+    /// Useless if `vue_carte`  is `VueCarte::AeroTemsi`.
+    /// Useless if `base_complete` is `BaseComplete::Oui`.
     altitude: Altitude,
 
-    /// Pas nécessaire lorsque le paramètre base_complete vaut `BaseComplete::Oui`.
+    /// Useless if `base_complete` is `BaseComplete::Oui`.
     zone: Zone,
 }
 
@@ -150,28 +158,48 @@ pub enum Zone {
 
 #[derive(Debug, Deserialize)]
 pub struct Cartes {
-    #[serde(default)]
-    pub bloc_zone: Vec<BlocZone>,
+    #[serde(default, rename = "bloc_zone")]
+    pub zones: Vec<BlocZone>,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct BlocZone {
+    /// e.g. FRANCE, EUROC
     #[serde(rename = "@idz")]
-    pub idz: String,
+    pub id: String,
+
+    /// e.g. FRANCE, EUROC
     #[serde(rename = "@nom")]
     pub nom: String,
-    #[serde(default)]
-    pub carte: Vec<Carte>,
+
+    #[serde(default, rename = "carte")]
+    pub cartes: Vec<Carte>,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct Carte {
+    /// e.g. WINTEM, TEMSI
     pub r#type: String,
+
+    /// /// e.g. FL20-100, FL50
     pub niveau: String,
-    pub zone_carte: String,
+
+    /// e.g. EUR, ANTILLES
+    #[serde(rename = "zone_carte")]
+    pub zone: String,
+
+    /// e.g. 24 04 2024 12:00
     pub date_run: String,
+
+    /// e.g. 24 04 2024 00:00
     pub date_echeance: String,
-    pub echeance: String,
+
+    /// e.g. 06 UTC
+    #[serde(rename = "echeance")]
+    pub heure_echeance: String,
+
+    /// e.g. <https://aviation.meteo.fr/...>
+    #[serde(deserialize_with = "de_linkify")]
     pub lien: String,
 }
 
@@ -182,7 +210,8 @@ mod tests {
     #[test]
     fn test_cartes() {
         let data = std::fs::read_to_string("./data/cartes.xml").unwrap();
+        let res = parse(&data);
 
-        assert!(parse_cartes(&data).is_ok());
+        assert!(res.is_ok());
     }
 }

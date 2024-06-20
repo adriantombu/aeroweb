@@ -1,5 +1,4 @@
 pub mod cartes;
+pub mod dossier;
 pub mod error;
-
-pub use cartes::*;
-pub use error::*;
+pub mod helpers;
