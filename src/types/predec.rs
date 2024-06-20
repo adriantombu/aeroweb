@@ -1,7 +1,7 @@
 use crate::error::Aeroweb;
 use serde::Deserialize;
 
-/// Retrieves PREDECs (PREvision DECollage).
+/// Retrieves PREDECs (`PREvision DECollage`).
 /// Only the following stations emit PREDEC:
 /// - CDG (LFPG)
 /// - Orly (LFPO)
