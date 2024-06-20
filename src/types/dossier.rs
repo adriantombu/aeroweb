@@ -4,7 +4,7 @@ use serde::{Deserialize, Serialize};
 
 /// Retrieves pre-established flight plans
 // Definition file : https://aviation.meteo.fr/FR/aviation/XSD/dossier.xsd
-// pub fn fetch() -> Result<Cartes, AerowebError> {}
+// pub fn fetch() -> Result<Dossier, AerowebError> {}
 
 /// Parses the XML string into a `Dossier` struct.
 ///
@@ -153,7 +153,7 @@ pub struct Message {
     #[serde(rename = "@nom")]
     pub nom: String,
 
-    /// METAR LFTW 201530Z AUTO 04007KT 010V070 9999 -RA FEW032///\nSCT048/// BKN130/// ///CB 22/19 Q1015 BECMG NSC=
+    /// e.g. METAR LFTW 201530Z AUTO 04007KT 010V070 9999 -RA FEW032///\nSCT048/// BKN130/// ///CB 22/19 Q1015 BECMG NSC=
     #[serde(default)]
     pub texte: String,
 }
