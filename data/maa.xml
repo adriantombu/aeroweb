@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<groupe><messages oaci="LFPG" nom="PARIS CHARLES DE GAULLE">
-<message type='MAA' date_reception='NIL'><texte><![CDATA[NIL]]></texte></message>
-</messages>
-<messages oaci="LFBO" nom="TOULOUSE BLAGNAC">
-<message type='MAA' date_reception='NIL'><texte><![CDATA[NIL]]></texte></message>
-</messages>
-<messages oaci="LFBA" nom="AGEN LA GARENNE">
-<message type='MAA' date_reception='NIL'><texte><![CDATA[NIL]]></texte></message>
-</messages>
+<groupe>
+    <messages oaci="LFPG" nom="PARIS CHARLES DE GAULLE">
+        <message type='MAA' date_reception='NIL'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
+    <messages oaci="LFBO" nom="TOULOUSE BLAGNAC">
+        <message type='MAA' date_reception='NIL'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
+    <messages oaci="LFBA" nom="AGEN LA GARENNE">
+        <message type='MAA' date_reception='NIL'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
 </groupe>

@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<groupe><messages oaci="LFBO" nom="TOULOUSE BLAGNAC">
-<message type="METAR"><texte><![CDATA[METAR LFBO 232000Z AUTO 31008KT CAVOK 08/M02 Q1019 NOSIG=]]></texte></message>
-<message type="TAFL"><texte><![CDATA[TAF LFBO 231700Z 2318/2424 31013KT CAVOK BECMG 2322/2324 27008KT
+<groupe>
+    <messages oaci="LFBO" nom="TOULOUSE BLAGNAC">
+        <message type="METAR">
+            <texte><![CDATA[METAR LFBO 232000Z AUTO 31008KT CAVOK 08/M02 Q1019 NOSIG=]]></texte>
+        </message>
+        <message type="TAFL">
+            <texte><![CDATA[TAF LFBO 231700Z 2318/2424 31013KT CAVOK BECMG 2322/2324 27008KT
 BECMG 2406/2408 28012KT BECMG 2408/2410 SCT040 BKN060 PROB30 TEMPO
 2410/2424 -SHRA SCT020TCU BKN040 PROB30 TEMPO 2411/2416 28015G25KT
-PROB40 TEMPO 2416/2419 4000 SHRA SCT015CB BKN030=]]></texte></message>
-<message type="SIGMET"><texte><![CDATA[LFBB SIGMET U05 VALID 231800/232200 LFPW-
+PROB40 TEMPO 2416/2419 4000 SHRA SCT015CB BKN030=]]></texte>
+        </message>
+        <message type="SIGMET">
+            <texte><![CDATA[LFBB SIGMET U05 VALID 231800/232200 LFPW-
 LFBB BORDEAUX FIR/UIR SEV TURB FCST E OF LINE N4215 E00200 - N4345
-E00245 AND SE OF LINE N4345 E00245 - N4345 E00245 SFC/FL060 STNR NC=]]></texte></message>
-</messages>
-<messages oaci="LFBA" nom="AGEN LA GARENNE">
-<message type="METAR"><texte><![CDATA[METAR LFBA 232000Z AUTO 29005KT CAVOK 07/M02 Q1020 NOSIG=]]></texte></message>
-<message type="TAFC"><texte><![CDATA[TAF LFBA 231400Z 2315/2324 34012KT CAVOK BECMG 2319/2321 30005KT=]]></texte></message>
-<message type="SIGMET"><texte><![CDATA[LFBB SIGMET U05 VALID 231800/232200 LFPW-
+E00245 AND SE OF LINE N4345 E00245 - N4345 E00245 SFC/FL060 STNR NC=]]></texte>
+        </message>
+    </messages>
+    <messages oaci="LFBA" nom="AGEN LA GARENNE">
+        <message type="METAR">
+            <texte><![CDATA[METAR LFBA 232000Z AUTO 29005KT CAVOK 07/M02 Q1020 NOSIG=]]></texte>
+        </message>
+        <message type="TAFC">
+            <texte><![CDATA[TAF LFBA 231400Z 2315/2324 34012KT CAVOK BECMG 2319/2321 30005KT=]]></texte>
+        </message>
+        <message type="SIGMET">
+            <texte><![CDATA[LFBB SIGMET U05 VALID 231800/232200 LFPW-
 LFBB BORDEAUX FIR/UIR SEV TURB FCST E OF LINE N4215 E00200 - N4345
-E00245 AND SE OF LINE N4345 E00245 - N4345 E00245 SFC/FL060 STNR NC=]]></texte></message>
-</messages>
+E00245 AND SE OF LINE N4345 E00245 - N4345 E00245 SFC/FL060 STNR NC=]]></texte>
+        </message>
+    </messages>
 </groupe>

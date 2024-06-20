@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<groupe><messages oaci='LFPW' nom='TOULOUSE'>
-<message date_reception='NIL' type='VAA'><texte><![CDATA[NIL]]></texte></message>
-</messages>
-<messages oaci='EGRR' nom='LONDON'>
-<message date_reception='NIL' type='VAA'><texte><![CDATA[NIL]]></texte></message>
-</messages>
-<messages oaci='RJTD' nom='TOKYO'>
-<message date_reception='20240423195200' type='VAA' ><texte><![CDATA[VA ADVISORY
+<groupe>
+    <messages oaci='LFPW' nom='TOULOUSE'>
+        <message date_reception='NIL' type='VAA'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
+    <messages oaci='EGRR' nom='LONDON'>
+        <message date_reception='NIL' type='VAA'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
+    <messages oaci='RJTD' nom='TOKYO'>
+        <message date_reception='20240423195200' type='VAA'>
+            <texte><![CDATA[VA ADVISORY
 DTG: 20240423/1952Z
 VAAC: TOKYO
 VOLCANO: SHEVELUCH 300270
@@ -27,6 +33,7 @@ N5639 E16122 - N5509 E16351
 FCST VA CLD +18 HR: NO VA EXP
 RMK: RE-SUSPENDED VA. THIS RELATES TO ASH DRIFTING FROM THE GROUND
 RATHER THAN TO ASH FROM A NEW ERUPTION.
-NXT ADVISORY: 20240424/0000Z=]]></texte></message>
-</messages>
+NXT ADVISORY: 20240424/0000Z=]]></texte>
+        </message>
+    </messages>
 </groupe>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<groupe><TCAG date_reception='NIL' oaci='FMEE' nom='LA REUNION' >
-<lien><![CDATA[NIL]]></lien>
-</TCAG>
+<groupe>
+    <TCAG date_reception='NIL' oaci='FMEE' nom='LA REUNION'>
+        <lien><![CDATA[NIL]]></lien>
+    </TCAG>
 </groupe>

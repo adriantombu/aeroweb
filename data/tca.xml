@@ -1,23 +1,38 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<groupe><messages  oaci='FMEE' nom='LA REUNION'>
-<message date_reception='NIL' type='TCA' ><texte><![CDATA[NIL]]></texte></message>
-</messages>
-<messages  oaci='KNHC' nom='MIAMI'>
-<message date_reception='NIL' type='TCA' ><texte><![CDATA[NIL]]></texte></message>
-</messages>
-<messages  oaci='RJTD' nom='TOKYO'>
-<message date_reception='NIL' type='TCA' ><texte><![CDATA[NIL]]></texte></message>
-</messages>
-<messages  oaci='PHFO' nom='HONOLULU'>
-<message date_reception='NIL' type='TCA' ><texte><![CDATA[NIL]]></texte></message>
-</messages>
-<messages  oaci='VIDP' nom='NEW DELHI'>
-<message date_reception='NIL' type='TCA' ><texte><![CDATA[NIL]]></texte></message>
-</messages>
-<messages  oaci='NFFN' nom='NADI'>
-<message date_reception='NIL' type='TCA' ><texte><![CDATA[NIL]]></texte></message>
-</messages>
-<messages  oaci='ADRM' nom='DARWIN'>
-<message date_reception='NIL' type='TCA' ><texte><![CDATA[NIL]]></texte></message>
-</messages>
+<groupe>
+    <messages oaci='FMEE' nom='LA REUNION'>
+        <message date_reception='NIL' type='TCA'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
+    <messages oaci='KNHC' nom='MIAMI'>
+        <message date_reception='NIL' type='TCA'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
+    <messages oaci='RJTD' nom='TOKYO'>
+        <message date_reception='NIL' type='TCA'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
+    <messages oaci='PHFO' nom='HONOLULU'>
+        <message date_reception='NIL' type='TCA'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
+    <messages oaci='VIDP' nom='NEW DELHI'>
+        <message date_reception='NIL' type='TCA'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
+    <messages oaci='NFFN' nom='NADI'>
+        <message date_reception='NIL' type='TCA'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
+    <messages oaci='ADRM' nom='DARWIN'>
+        <message date_reception='NIL' type='TCA'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
 </groupe>

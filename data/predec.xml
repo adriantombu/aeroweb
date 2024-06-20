@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<groupe><messages oaci="LFPO" nom="PARIS ORLY">
-<message type="PREDEC" date_reception="20240423201500"><texte><![CDATA[PREDEC
-22/23 32008KT T07 DP02 Q1017=]]></texte></message>
-</messages>
-<messages oaci="LFPG" nom="PARIS CHARLES DE GAULLE">
-<message type="PREDEC" date_reception="20240423201500"><texte><![CDATA[PREDEC
-22/23 33005KT T07 DP01 Q1017=]]></texte></message>
-</messages>
-<messages oaci="SOCA" nom="CAYENNE FELIX EBOUE">
-<message type='PREDEC' date_reception='NIL'><texte><![CDATA[NIL]]></texte></message>
-</messages>
-<messages oaci="TFFF" nom="MARTINIQUE AIME CESAIRE">
-<message type='PREDEC' date_reception='NIL'><texte><![CDATA[NIL]]></texte></message>
-</messages>
-<messages oaci="NTAA" nom="TAHITI FAA'A">
-<message type='PREDEC' date_reception='NIL'><texte><![CDATA[NIL]]></texte></message>
-</messages>
+<groupe>
+    <messages oaci="LFPO" nom="PARIS ORLY">
+        <message type="PREDEC" date_reception="20240423201500">
+            <texte><![CDATA[PREDEC
+22/23 32008KT T07 DP02 Q1017=]]></texte>
+        </message>
+    </messages>
+    <messages oaci="LFPG" nom="PARIS CHARLES DE GAULLE">
+        <message type="PREDEC" date_reception="20240423201500">
+            <texte><![CDATA[PREDEC
+22/23 33005KT T07 DP01 Q1017=]]></texte>
+        </message>
+    </messages>
+    <messages oaci="SOCA" nom="CAYENNE FELIX EBOUE">
+        <message type='PREDEC' date_reception='NIL'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
+    <messages oaci="TFFF" nom="MARTINIQUE AIME CESAIRE">
+        <message type='PREDEC' date_reception='NIL'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
+    <messages oaci="NTAA" nom="TAHITI FAA'A">
+        <message type='PREDEC' date_reception='NIL'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
 </groupe>

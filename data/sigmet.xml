@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<groupe><messages oaci="LFMM" nom="MARSEILLE">
-<message type="SIGMET"><texte><![CDATA[LFMM SIGMET U05 VALID 231800/232200 LFPW-
+<groupe>
+    <messages oaci="LFMM" nom="MARSEILLE">
+        <message type="SIGMET">
+            <texte><![CDATA[LFMM SIGMET U05 VALID 231800/232200 LFPW-
 LFMM MARSEILLE FIR/UIR SEV TURB FCST WI N4215 E00315 - N4215 E00230 -
  N4345 E00245 - N4500 E00415 - N4445 E00545 - N4315 E00515 - N4315
-E00445 - N4430 E00430 - N4315 E00300 - N4215 E00315 SFC/FL060 STNR NC=]]></texte></message>
-</messages>
-<messages oaci="EBBU" nom="BRUSSELS">
-<message type="gamet"><texte><![CDATA[EBBU GAMET VALID 231800/240000 EBBR-
+E00445 - N4430 E00430 - N4315 E00300 - N4215 E00315 SFC/FL060 STNR NC=]]></texte>
+        </message>
+    </messages>
+    <messages oaci="EBBU" nom="BRUSSELS">
+        <message type="gamet">
+            <texte><![CDATA[EBBU GAMET VALID 231800/240000 EBBR-
 EBBU BRUSSELS FIR BLW FL100
 SECN I
 SFC VIS (BELOW 5KM):     IN OCCLUSION 4500M RA
@@ -35,7 +39,8 @@ OTLK:                    FM 00 TL 06 Z
                     SFC VIS: 00/04 HIGH GROUNDS 500-2500M FG BR RADZ
                              05/06 HIGH GROUNDS 800-1500M FG RASN
                     SIG CLD: ISOL TCU 1500/ABV10000FT AGL
-                             HIGH GROUNDS BKN 200-500/8000FT AGL=]]></texte></message>
-</messages>
-<messages oaci="LFRR" nom="BREST" />
+                             HIGH GROUNDS BKN 200-500/8000FT AGL=]]></texte>
+        </message>
+    </messages>
+    <messages oaci="LFRR" nom="BREST"/>
 </groupe>
