@@ -1,10 +1,10 @@
 use crate::error::Aeroweb;
-use crate::helpers::de_linkify;
+use crate::types::helpers::de_linkify;
 use serde::{Deserialize, Serialize};
 
 /// Retrieves a list of aeronautical maps (TEMSI et WINTEM).
 // Definition file : https://aviation.meteo.fr/FR/aviation/XSD/cartes.xsd
-// pub fn fetch_cartes() -> Result<Cartes, AerowebError> {}
+// pub fn fetch() -> Result<Cartes, AerowebError> {}
 
 /// Parses the XML string into a `Cartes` struct.
 ///
@@ -19,17 +19,17 @@ pub fn parse(xml: &str) -> Result<Cartes, Aeroweb> {
 #[derive(Debug, Default, Serialize)]
 pub struct Options {
     /// If the value is `BaseComplete::Oui`, the following parameters are optional.
-    base_complete: BaseComplete,
+    pub base_complete: BaseComplete,
 
     /// Useless if `base_complete` is `BaseComplete::Oui`.
-    vue_carte: VueCarte,
+    pub vue_carte: VueCarte,
 
     /// Useless if `vue_carte`  is `VueCarte::AeroTemsi`.
     /// Useless if `base_complete` is `BaseComplete::Oui`.
-    altitude: Altitude,
+    pub altitude: Altitude,
 
     /// Useless if `base_complete` is `BaseComplete::Oui`.
-    zone: Zone,
+    pub zone: Zone,
 }
 
 #[derive(Debug, Default, Serialize)]

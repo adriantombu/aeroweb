@@ -1,10 +1,10 @@
 use crate::error::Aeroweb;
-use crate::helpers::de_linkify;
+use crate::types::helpers::de_linkify;
 use serde::{Deserialize, Serialize};
 
 /// Retrieves pre-established flight plans
 // Definition file : https://aviation.meteo.fr/FR/aviation/XSD/dossier.xsd
-// pub fn fetch_dossiers() -> Result<Cartes, AerowebError> {}
+// pub fn fetch() -> Result<Cartes, AerowebError> {}
 
 /// Parses the XML string into a `Dossier` struct.
 ///
@@ -18,7 +18,7 @@ pub fn parse(xml: &str) -> Result<Dossier, Aeroweb> {
 
 #[derive(Debug, Default, Serialize)]
 pub struct Options {
-    destination: Destination,
+    pub destination: Destination,
 }
 
 // TODO: missing several regions
@@ -185,7 +185,7 @@ pub struct Carte {
     pub lien: String,
 }
 
-/// Graphique d’avertissement de cendres volcaniques
+/// Volcanic ash warning graphic
 #[derive(Debug, Deserialize)]
 pub struct Vag {
     /// e.g. 20240620210000
@@ -205,7 +205,7 @@ pub struct Vag {
     pub lien: String,
 }
 
-/// Graphique d’avertissement de cyclones tropicaux
+/// Tropical cyclone warning graphic
 #[derive(Debug, Deserialize)]
 pub struct Tcag {
     /// e.g. 20240620210000
