@@ -32,7 +32,7 @@ pub struct Observation {
     #[serde(rename = "@NAME")]
     pub name: String,
 
-    /// e.g. NODATA, SWX ADVISORY ...
+    /// e.g. SWX ADVISORY ...
     #[serde(rename = "$text", deserialize_with = "de_option_string")]
     pub message: Option<String>,
 }

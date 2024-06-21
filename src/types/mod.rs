@@ -7,3 +7,4 @@ pub mod opmet;
 pub mod predec;
 pub mod sigmet;
 pub mod sw;
+pub mod tca;
