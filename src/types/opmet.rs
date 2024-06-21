@@ -1,4 +1,5 @@
 use crate::error::Aeroweb;
+use crate::types::helpers::de_option_string;
 use serde::Deserialize;
 
 /// Retrieves OPMET data (METAR, SPECI, TAF, SIGMET, ...) for a list of airports (50 max for the same request)
@@ -17,7 +18,7 @@ pub fn parse(xml: &str) -> Result<Opmet, Aeroweb> {
 
 #[derive(Debug, Deserialize)]
 pub struct Opmet {
-    #[serde(default, rename = "messages")]
+    #[serde(default, rename = "opmet")]
     pub airports: Vec<Airport>,
 }
 
@@ -31,19 +32,23 @@ pub struct Airport {
     #[serde(rename = "@nom")]
     pub nom: String,
 
-    #[serde(default, rename = "message")]
-    pub messages: Vec<Message>,
-}
+    #[serde(rename = "METAR", deserialize_with = "de_option_string")]
+    pub metar: Option<String>,
 
-#[derive(Debug, Deserialize)]
-pub struct Message {
-    /// e.g. METAR, TAFL
-    #[serde(rename = "@type")]
-    pub r#type: String,
+    #[serde(rename = "TAF", deserialize_with = "de_option_string")]
+    pub taf: Option<String>,
 
-    /// e.g. METAR LFTW 201530Z AUTO 04007KT 010V070 9999 -RA FEW032///\nSCT048/// BKN130/// ///CB 22/19 Q1015 BECMG NSC=
-    #[serde(default)]
-    pub texte: String,
+    #[serde(rename = "SPECI", deserialize_with = "de_option_string")]
+    pub speci: Option<String>,
+
+    #[serde(rename = "SIGMET", deserialize_with = "de_option_string")]
+    pub sigmet: Option<String>,
+
+    #[serde(rename = "GAMET", deserialize_with = "de_option_string")]
+    pub gamet: Option<String>,
+
+    #[serde(rename = "AIRMET", deserialize_with = "de_option_string")]
+    pub airmet: Option<String>,
 }
 
 #[cfg(test)]
@@ -52,7 +57,7 @@ mod tests {
 
     #[test]
     fn test_dossier() {
-        let data = std::fs::read_to_string("./data/opmet.xml").unwrap();
+        let data = std::fs::read_to_string("./data/opmet2.xml").unwrap();
         let res = parse(&data);
 
         assert!(res.is_ok());

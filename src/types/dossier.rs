@@ -1,5 +1,5 @@
 use crate::error::Aeroweb;
-use crate::types::helpers::de_linkify;
+use crate::types::helpers::{de_option_link, de_option_string};
 use serde::{Deserialize, Serialize};
 
 /// Retrieves pre-established flight plans
@@ -123,8 +123,8 @@ pub struct Dossier {
     pub id: String,
 
     /// e.g. <https://aviation.meteo.fr/...>
-    #[serde(rename = "@lienPDF", deserialize_with = "de_linkify")]
-    pub lien: String,
+    #[serde(rename = "@lienPDF", deserialize_with = "de_option_link")]
+    pub lien: Option<String>,
 
     #[serde(default, rename = "message")]
     pub messages: Vec<Message>,
@@ -154,8 +154,8 @@ pub struct Message {
     pub nom: String,
 
     /// e.g. METAR LFTW 201530Z AUTO 04007KT 010V070 9999 -RA FEW032///\nSCT048/// BKN130/// ///CB 22/19 Q1015 BECMG NSC=
-    #[serde(default)]
-    pub texte: String,
+    #[serde(default, deserialize_with = "de_option_string")]
+    pub texte: Option<String>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -181,17 +181,13 @@ pub struct Carte {
     pub heure_echeance: String,
 
     /// e.g. <https://aviation.meteo.fr/...>
-    #[serde(deserialize_with = "de_linkify")]
-    pub lien: String,
+    #[serde(deserialize_with = "de_option_link")]
+    pub lien: Option<String>,
 }
 
 /// Volcanic ash warning graphic
 #[derive(Debug, Deserialize)]
 pub struct Vag {
-    /// e.g. 20240620210000
-    #[serde(rename = "@date_reception")]
-    pub date_reception: String,
-
     /// e.g. LFPW, RJTD
     #[serde(rename = "@oaci")]
     pub oaci: String,
@@ -200,18 +196,18 @@ pub struct Vag {
     #[serde(rename = "@nom")]
     pub nom: String,
 
+    /// e.g. NIL, 20240620210000
+    #[serde(rename = "@date_reception", deserialize_with = "de_option_string")]
+    pub date_reception: Option<String>,
+
     /// e.g. NIL, <https://aviation.meteo.fr/...>
-    #[serde(default, deserialize_with = "de_linkify")]
-    pub lien: String,
+    #[serde(default, deserialize_with = "de_option_link")]
+    pub lien: Option<String>,
 }
 
 /// Tropical cyclone warning graphic
 #[derive(Debug, Deserialize)]
 pub struct Tcag {
-    /// e.g. 20240620210000
-    #[serde(rename = "@date_reception")]
-    pub date_reception: String,
-
     /// e.g. LFPW, RJTD
     #[serde(rename = "@oaci")]
     pub oaci: String,
@@ -220,9 +216,13 @@ pub struct Tcag {
     #[serde(rename = "@nom")]
     pub nom: String,
 
+    /// e.g. NIL, 20240620210000
+    #[serde(rename = "@date_reception", deserialize_with = "de_option_string")]
+    pub date_reception: Option<String>,
+
     /// e.g. NIL, <https://aviation.meteo.fr/...>
-    #[serde(default, deserialize_with = "de_linkify")]
-    pub lien: String,
+    #[serde(default, deserialize_with = "de_option_link")]
+    pub lien: Option<String>,
 }
 
 #[cfg(test)]

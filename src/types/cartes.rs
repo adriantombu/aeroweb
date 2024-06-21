@@ -1,5 +1,5 @@
 use crate::error::Aeroweb;
-use crate::types::helpers::de_linkify;
+use crate::types::helpers::de_option_link;
 use serde::{Deserialize, Serialize};
 
 /// Retrieves a list of aeronautical maps (TEMSI et WINTEM).
@@ -199,8 +199,8 @@ pub struct Carte {
     pub heure_echeance: String,
 
     /// e.g. <https://aviation.meteo.fr/...>
-    #[serde(deserialize_with = "de_linkify")]
-    pub lien: String,
+    #[serde(deserialize_with = "de_option_link")]
+    pub lien: Option<String>,
 }
 
 #[cfg(test)]
