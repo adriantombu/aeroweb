@@ -1,4 +1,5 @@
 use crate::error::Aeroweb;
+use crate::types::helpers::de_option_string;
 use serde::Deserialize;
 
 /// Retrieves Space Weather Advisories
@@ -32,8 +33,8 @@ pub struct Observation {
     pub name: String,
 
     /// e.g. NODATA, SWX ADVISORY ...
-    #[serde(rename = "$text")]
-    pub message: String,
+    #[serde(rename = "$text", deserialize_with = "de_option_string")]
+    pub message: Option<String>,
 }
 
 #[cfg(test)]

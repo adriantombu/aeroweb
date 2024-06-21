@@ -1,4 +1,5 @@
 use crate::error::Aeroweb;
+use crate::types::helpers::de_option_string;
 use serde::Deserialize;
 
 /// Retrieves SIGMETs and/or AIRMETs and/or GAMETs for a list of FIR and/or airports
@@ -18,7 +19,7 @@ pub fn parse(xml: &str) -> Result<Sigmet, Aeroweb> {
 
 #[derive(Debug, Deserialize)]
 pub struct Sigmet {
-    #[serde(default, rename = "messages")]
+    #[serde(default, rename = "FIR")]
     pub firs: Vec<Fir>,
 }
 
@@ -32,18 +33,14 @@ pub struct Fir {
     #[serde(rename = "@nom")]
     pub nom: String,
 
-    pub message: Option<Message>,
-}
+    #[serde(rename = "SIGMET", deserialize_with = "de_option_string")]
+    pub sigmet: Option<String>,
 
-#[derive(Debug, Deserialize)]
-pub struct Message {
-    /// e.g. SIGMET, GAMET
-    #[serde(rename = "@type")]
-    pub r#type: String,
+    #[serde(rename = "GAMET", deserialize_with = "de_option_string")]
+    pub gamet: Option<String>,
 
-    /// e.g. LFMM SIGMET U05 VALID 231800/232200 LFPW-\nLFMM MARSEILLE FIR/UIR SEV TURB FCST WI N4215 E00315 - N4215 E00230 -\n N4345 E00245 - N4500 E00415 - N4445 E00545 - N4315 E00515 - N4315\nE00445 - N4430 E00430 - N4315 E00300 - N4215 E00315 SFC/FL060 STNR NC=
-    #[serde(default)]
-    pub texte: String,
+    #[serde(rename = "AIRMET", deserialize_with = "de_option_string")]
+    pub airmet: Option<String>,
 }
 
 #[cfg(test)]
@@ -52,7 +49,7 @@ mod tests {
 
     #[test]
     fn test_dossier() {
-        let data = std::fs::read_to_string("./data/sigmet.xml").unwrap();
+        let data = std::fs::read_to_string("./data/sigmet2.xml").unwrap();
         let res = parse(&data);
 
         assert!(res.is_ok());
