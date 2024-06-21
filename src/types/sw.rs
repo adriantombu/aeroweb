@@ -6,7 +6,7 @@ use serde::Deserialize;
 /// Space weather is advisory information on space weather phenomena expected to affect high-frequency radio communications, satellite communications, and GNSS-based navigation and surveillance systems, or will create a radiation hazard to aircraft occupants.
 // pub fn fetch() -> Result<SpaceWeather, AerowebError> {}
 
-/// Parses the XML string into an `SpaceWeather` struct.
+/// Parses the XML string into a `SpaceWeather` struct.
 ///
 /// # Errors
 ///

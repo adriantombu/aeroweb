@@ -13,7 +13,7 @@ use serde::Deserialize;
 // Definition file : https://aviation.meteo.fr/FR/aviation/XSD/tca.xsd
 // pub fn fetch() -> Result<Tca, AerowebError> {}
 
-/// Parses the XML string into an `Tca` struct.
+/// Parses the XML string into a `Tca` struct.
 ///
 /// # Errors
 ///

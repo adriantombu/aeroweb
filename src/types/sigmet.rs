@@ -7,7 +7,7 @@ use serde::Deserialize;
 // Definition file : https://aviation.meteo.fr/FR/aviation/XSD/sigmet.xsd
 // pub fn fetch() -> Result<Sigmet, AerowebError> {}
 
-/// Parses the XML string into an `Sigmet` struct.
+/// Parses the XML string into a `Sigmet` struct.
 ///
 /// # Errors
 ///

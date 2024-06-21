@@ -10,3 +10,4 @@ pub mod sw;
 pub mod tca;
 pub mod tcag;
 pub mod vaa;
+pub mod vag;

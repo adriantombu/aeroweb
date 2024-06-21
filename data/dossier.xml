@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <dossier id="CHINE"
-         lienPDF="/FR/aviation/affiche_dossier_preetabli.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uGXZZaXtdWt">
+         lienPDF="/FR/aviation/affiche_dossier_preetabli.php">
     <message type="METAR" oaci="LFPG" nom="PARIS CHARLES DE GAULLE">
         <texte><![CDATA[METAR LFPG 201600Z 04005KT 350V070 9999 FEW026 BKN034 BKN140 21/16
 Q1015 NOSIG=]]></texte>
@@ -454,427 +454,7 @@ NXT ADVISORY: 20240620/1200Z=]]></texte>
         <date_echeance>20240620150000</date_echeance>
         <echeance>15 UTC</echeance>
         <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl450&echeance=20240620150000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL450</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 18:00</date_run>
-        <date_echeance>20240620180000</date_echeance>
-        <echeance>18 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl450&echeance=20240620180000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL450</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 21:00</date_run>
-        <date_echeance>20240620210000</date_echeance>
-        <echeance>21 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl450&echeance=20240620210000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL410</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 15:00</date_run>
-        <date_echeance>20240620150000</date_echeance>
-        <echeance>15 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl410&echeance=20240620150000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL410</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 18:00</date_run>
-        <date_echeance>20240620180000</date_echeance>
-        <echeance>18 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl410&echeance=20240620180000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL410</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 21:00</date_run>
-        <date_echeance>20240620210000</date_echeance>
-        <echeance>21 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl410&echeance=20240620210000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL390</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 15:00</date_run>
-        <date_echeance>20240620150000</date_echeance>
-        <echeance>15 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl390&echeance=20240620150000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL390</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 18:00</date_run>
-        <date_echeance>20240620180000</date_echeance>
-        <echeance>18 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl390&echeance=20240620180000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL390</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 21:00</date_run>
-        <date_echeance>20240620210000</date_echeance>
-        <echeance>21 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl390&echeance=20240620210000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL360</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 15:00</date_run>
-        <date_echeance>20240620150000</date_echeance>
-        <echeance>15 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl360&echeance=20240620150000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL360</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 18:00</date_run>
-        <date_echeance>20240620180000</date_echeance>
-        <echeance>18 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl360&echeance=20240620180000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL360</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 21:00</date_run>
-        <date_echeance>20240620210000</date_echeance>
-        <echeance>21 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl360&echeance=20240620210000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL340</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 15:00</date_run>
-        <date_echeance>20240620150000</date_echeance>
-        <echeance>15 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl340&echeance=20240620150000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL340</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 18:00</date_run>
-        <date_echeance>20240620180000</date_echeance>
-        <echeance>18 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl340&echeance=20240620180000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL340</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 21:00</date_run>
-        <date_echeance>20240620210000</date_echeance>
-        <echeance>21 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl340&echeance=20240620210000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL320</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 15:00</date_run>
-        <date_echeance>20240620150000</date_echeance>
-        <echeance>15 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl320&echeance=20240620150000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL320</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 18:00</date_run>
-        <date_echeance>20240620180000</date_echeance>
-        <echeance>18 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl320&echeance=20240620180000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL320</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 21:00</date_run>
-        <date_echeance>20240620210000</date_echeance>
-        <echeance>21 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl320&echeance=20240620210000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL300</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 15:00</date_run>
-        <date_echeance>20240620150000</date_echeance>
-        <echeance>15 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl300&echeance=20240620150000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL300</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 18:00</date_run>
-        <date_echeance>20240620180000</date_echeance>
-        <echeance>18 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl300&echeance=20240620180000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL300</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 21:00</date_run>
-        <date_echeance>20240620210000</date_echeance>
-        <echeance>21 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl300&echeance=20240620210000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL270</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 15:00</date_run>
-        <date_echeance>20240620150000</date_echeance>
-        <echeance>15 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl270&echeance=20240620150000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL270</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 18:00</date_run>
-        <date_echeance>20240620180000</date_echeance>
-        <echeance>18 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl270&echeance=20240620180000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL270</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 21:00</date_run>
-        <date_echeance>20240620210000</date_echeance>
-        <echeance>21 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl270&echeance=20240620210000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL240</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 15:00</date_run>
-        <date_echeance>20240620150000</date_echeance>
-        <echeance>15 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl240&echeance=20240620150000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL240</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 18:00</date_run>
-        <date_echeance>20240620180000</date_echeance>
-        <echeance>18 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl240&echeance=20240620180000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL240</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 21:00</date_run>
-        <date_echeance>20240620210000</date_echeance>
-        <echeance>21 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl240&echeance=20240620210000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL210</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 15:00</date_run>
-        <date_echeance>20240620150000</date_echeance>
-        <echeance>15 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl210&echeance=20240620150000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL210</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 18:00</date_run>
-        <date_echeance>20240620180000</date_echeance>
-        <echeance>18 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl210&echeance=20240620180000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL210</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 21:00</date_run>
-        <date_echeance>20240620210000</date_echeance>
-        <echeance>21 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl210&echeance=20240620210000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL180</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 15:00</date_run>
-        <date_echeance>20240620150000</date_echeance>
-        <echeance>15 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl180&echeance=20240620150000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL180</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 18:00</date_run>
-        <date_echeance>20240620180000</date_echeance>
-        <echeance>18 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl180&echeance=20240620180000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL180</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 21:00</date_run>
-        <date_echeance>20240620210000</date_echeance>
-        <echeance>21 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl180&echeance=20240620210000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL140</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 15:00</date_run>
-        <date_echeance>20240620150000</date_echeance>
-        <echeance>15 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl140&echeance=20240620150000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL140</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 18:00</date_run>
-        <date_echeance>20240620180000</date_echeance>
-        <echeance>18 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl140&echeance=20240620180000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL140</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 21:00</date_run>
-        <date_echeance>20240620210000</date_echeance>
-        <echeance>21 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl140&echeance=20240620210000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL100</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 15:00</date_run>
-        <date_echeance>20240620150000</date_echeance>
-        <echeance>15 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl100&echeance=20240620150000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL100</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 18:00</date_run>
-        <date_echeance>20240620180000</date_echeance>
-        <echeance>18 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl100&echeance=20240620180000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL100</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 21:00</date_run>
-        <date_echeance>20240620210000</date_echeance>
-        <echeance>21 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl100&echeance=20240620210000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL80</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 15:00</date_run>
-        <date_echeance>20240620150000</date_echeance>
-        <echeance>15 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl080&echeance=20240620150000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL80</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 18:00</date_run>
-        <date_echeance>20240620180000</date_echeance>
-        <echeance>18 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl080&echeance=20240620180000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL80</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 21:00</date_run>
-        <date_echeance>20240620210000</date_echeance>
-        <echeance>21 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl080&echeance=20240620210000]]></lien>
-    </carte>
-    <carte>
-        <typecarte>WINTEM</typecarte>
-        <niveau>FL50</niveau>
-        <zone>MID G</zone>
-        <date_run>20 06 2024 15:00</date_run>
-        <date_echeance>20240620150000</date_echeance>
-        <echeance>15 UTC</echeance>
-        <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl050&echeance=20240620150000]]></lien>
+            <![CDATA[/FR/aviation/affiche_image.php]]></lien>
     </carte>
     <carte>
         <typecarte>WINTEM</typecarte>
@@ -884,7 +464,7 @@ NXT ADVISORY: 20240620/1200Z=]]></texte>
         <date_echeance>20240620180000</date_echeance>
         <echeance>18 UTC</echeance>
         <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl050&echeance=20240620180000]]></lien>
+            <![CDATA[/FR/aviation/affiche_image.php]]></lien>
     </carte>
     <carte>
         <typecarte>WINTEM</typecarte>
@@ -894,7 +474,7 @@ NXT ADVISORY: 20240620/1200Z=]]></texte>
         <date_echeance>20240620210000</date_echeance>
         <echeance>21 UTC</echeance>
         <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=wintemp/uk/smpz_g/fl050&echeance=20240620210000]]></lien>
+            <![CDATA[/FR/aviation/affiche_image.php]]></lien>
     </carte>
     <carte>
         <typecarte>TEMSI</typecarte>
@@ -904,35 +484,35 @@ NXT ADVISORY: 20240620/1200Z=]]></texte>
         <date_echeance>20240620180000</date_echeance>
         <echeance>18 UTC</echeance>
         <lien>
-            <![CDATA[/FR/aviation/affiche_image.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=sigwx/uk/smpz_g&echeance=20240620180000]]></lien>
+            <![CDATA[/FR/aviation/affiche_image.php]]></lien>
     </carte>
     <VAG date_reception='20240620090000' oaci='ADRM' nom='DARWIN'>
         <lien>
-            <![CDATA[/FR/aviation/affiche_vagtcag.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=vag/adrm&echeance=20240620090000]]></lien>
+            <![CDATA[/FR/aviation/affiche_vagtcag.php]]></lien>
     </VAG>
     <VAG date_reception='20240620110000' oaci='ADRM' nom='DARWIN'>
         <lien>
-            <![CDATA[/FR/aviation/affiche_vagtcag.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=vag/adrm&echeance=20240620110000]]></lien>
+            <![CDATA[/FR/aviation/affiche_vagtcag.php]]></lien>
     </VAG>
     <VAG date_reception='20240620130000' oaci='ADRM' nom='DARWIN'>
         <lien>
-            <![CDATA[/FR/aviation/affiche_vagtcag.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=vag/adrm&echeance=20240620130000]]></lien>
+            <![CDATA[/FR/aviation/affiche_vagtcag.php]]></lien>
     </VAG>
     <VAG date_reception='20240620140000' oaci='ADRM' nom='DARWIN'>
         <lien>
-            <![CDATA[/FR/aviation/affiche_vagtcag.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=vag/adrm&echeance=20240620140000]]></lien>
+            <![CDATA[/FR/aviation/affiche_vagtcag.php]]></lien>
     </VAG>
     <VAG date_reception='20240620150000' oaci='ADRM' nom='DARWIN'>
         <lien>
-            <![CDATA[/FR/aviation/affiche_vagtcag.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=vag/adrm&echeance=20240620150000]]></lien>
+            <![CDATA[/FR/aviation/affiche_vagtcag.php]]></lien>
     </VAG>
     <VAG date_reception='20240620083800' oaci='RJTD' nom='TOKYO'>
         <lien>
-            <![CDATA[/FR/aviation/affiche_vagtcag.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=vag/rjtd&echeance=20240620083800]]></lien>
+            <![CDATA[/FR/aviation/affiche_vagtcag.php]]></lien>
     </VAG>
     <VAG date_reception='20240620120100' oaci='RJTD' nom='TOKYO'>
         <lien>
-            <![CDATA[/FR/aviation/affiche_vagtcag.php?login=ebO5r6yBvHOOh7AK4GqcYWxqn21kaWzd1uE%3D&layer=vag/rjtd&echeance=20240620120100]]></lien>
+            <![CDATA[/FR/aviation/affiche_vagtcag.php]]></lien>
     </VAG>
     <VAG date_reception='NIL' oaci='LFPW' nom='TOULOUSE'>
         <lien><![CDATA[NIL]]></lien>

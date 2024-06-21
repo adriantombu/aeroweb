@@ -15,7 +15,7 @@ use serde::Deserialize;
 // Definition file : https://aviation.meteo.fr/FR/aviation/XSD/vaa.xsd
 // pub fn fetch() -> Result<Vaa, AerowebError> {}
 
-/// Parses the XML string into an `Vaa` struct.
+/// Parses the XML string into a `Vaa` struct.
 ///
 /// # Errors
 ///

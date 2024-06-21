@@ -15,7 +15,7 @@ use serde::Deserialize;
 // Definition file : https://aviation.meteo.fr/FR/aviation/XSD/predec.xsd
 // pub fn fetch() -> Result<Predec, AerowebError> {}
 
-/// Parses the XML string into an `Predec` struct.
+/// Parses the XML string into a `Predec` struct.
 ///
 /// # Errors
 ///
