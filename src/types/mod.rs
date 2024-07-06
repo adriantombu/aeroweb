@@ -1,13 +1,3 @@
-pub mod cartes;
-pub mod dossier;
-pub mod error;
-mod helpers;
-pub mod maa;
-pub mod opmet;
-pub mod predec;
-pub mod sigmet;
-pub mod sw;
-pub mod tca;
-pub mod tcag;
-pub mod vaa;
-pub mod vag;
+pub mod client;
+pub mod fir;
+pub mod oaci_airport;

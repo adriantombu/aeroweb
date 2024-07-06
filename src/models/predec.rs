@@ -1,23 +1,32 @@
 use crate::error::Aeroweb;
-use crate::types::helpers::de_option_string;
+use crate::models::helpers::de_option_string;
 use serde::Deserialize;
 
-/// Retrieves MAAs (Messages d'Avertissement d'Aérodromes) from the last 48 hours. Only French airports (metropolitan and DOM-TOM) emit this kind of message.
-// Definition file : https://aviation.meteo.fr/FR/aviation/XSD/maa.xsd
-// pub fn fetch() -> Result<Maa, AerowebError> {}
+/// Retrieves PREDECs (`PREvision DECollage`).
+/// Only the following stations emit PREDEC:
+/// - CDG (LFPG)
+/// - Orly (LFPO)
+/// - Cayenne (SOCA)
+/// - Fort de France (TFFF)
+/// - Pointe à pitre (TFFR)
+/// - Saint Denis (FMEE)
+/// - Nouméa (NWWW)
+/// - Tahiti (NTAA)
+// Definition file : https://aviation.meteo.fr/FR/aviation/XSD/predec.xsd
+// pub fn fetch() -> Result<Predec, AerowebError> {}
 
-/// Parses the XML string into an `Maa` struct.
+/// Parses the XML string into a `Predec` struct.
 ///
 /// # Errors
 ///
 /// Returns an error if the XML string cannot be parsed.
 ///
-pub fn parse(xml: &str) -> Result<Maa, Aeroweb> {
-    quick_xml::de::from_str(xml).map_err(Aeroweb::Deserialize)
+pub fn parse(xml: &str) -> Result<Predec, Aeroweb> {
+    Ok(quick_xml::de::from_str(xml)?)
 }
 
 #[derive(Debug, Deserialize)]
-pub struct Maa {
+pub struct Predec {
     #[serde(default, rename = "messages")]
     pub airports: Vec<Airport>,
 }
@@ -37,7 +46,7 @@ pub struct Airport {
 
 #[derive(Debug, Deserialize)]
 pub struct Message {
-    /// e.g. MAA
+    /// e.g. PREDEC
     #[serde(rename = "@type")]
     pub r#type: String,
 
@@ -56,7 +65,7 @@ mod tests {
 
     #[test]
     fn test_dossier() {
-        let data = std::fs::read_to_string("./data/maa.xml").unwrap();
+        let data = std::fs::read_to_string("./data/predec.xml").unwrap();
         let res = parse(&data);
 
         assert!(res.is_ok());

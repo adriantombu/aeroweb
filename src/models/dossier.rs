@@ -1,5 +1,5 @@
 use crate::error::Aeroweb;
-use crate::types::helpers::{de_option_link, de_option_string};
+use crate::models::helpers::{de_option_link, de_option_string};
 use serde::{Deserialize, Serialize};
 
 /// Retrieves pre-established flight plans
@@ -13,7 +13,7 @@ use serde::{Deserialize, Serialize};
 /// Returns an error if the XML string cannot be parsed.
 ///
 pub fn parse(xml: &str) -> Result<Dossier, Aeroweb> {
-    quick_xml::de::from_str(xml).map_err(Aeroweb::Deserialize)
+    Ok(quick_xml::de::from_str(xml)?)
 }
 
 #[derive(Debug, Default, Serialize)]

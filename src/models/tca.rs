@@ -1,5 +1,5 @@
 use crate::error::Aeroweb;
-use crate::types::helpers::de_option_string;
+use crate::models::helpers::de_option_string;
 use serde::Deserialize;
 
 /// Retrieves tropical cyclone warning messages for a list of producing centers:
@@ -20,7 +20,7 @@ use serde::Deserialize;
 /// Returns an error if the XML string cannot be parsed.
 ///
 pub fn parse(xml: &str) -> Result<Tca, Aeroweb> {
-    quick_xml::de::from_str(xml).map_err(Aeroweb::Deserialize)
+    Ok(quick_xml::de::from_str(xml)?)
 }
 
 #[derive(Debug, Deserialize)]
