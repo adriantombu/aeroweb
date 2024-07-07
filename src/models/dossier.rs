@@ -1,119 +1,202 @@
 use crate::error::Aeroweb;
 use crate::models::helpers::{de_option_link, de_option_string};
-use serde::{Deserialize, Serialize};
+use crate::types::client::Client;
+use serde::Deserialize;
 
-/// Retrieves pre-established flight plans
-// Definition file : https://aviation.meteo.fr/FR/aviation/XSD/dossier.xsd
-// pub fn fetch() -> Result<Dossier, AerowebError> {}
-
-/// Parses the XML string into a `Dossier` struct.
-///
-/// # Errors
-///
-/// Returns an error if the XML string cannot be parsed.
-///
-pub fn parse(xml: &str) -> Result<Dossier, Aeroweb> {
-    Ok(quick_xml::de::from_str(xml)?)
+#[derive(Debug, Default)]
+pub struct RequestOptions {
+    /// Default is `Destination::GrandSudOuestFrance`
+    pub destination: Option<Destination>,
 }
 
-#[derive(Debug, Default, Serialize)]
-pub struct Options {
-    pub destination: Destination,
-}
-
-// TODO: missing several regions
-#[derive(Debug, Default, Serialize)]
+#[derive(Debug, Default, strum::Display)]
 pub enum Destination {
-    // Aviation légère
-    #[serde(rename = "ALPES")]
+    // Light aviation
+    #[strum(serialize = "ALPES")]
     Alpes,
-    #[serde(rename = "ANTILLES")]
+    #[strum(serialize = "ANTILLES")]
     Antilles,
-    #[serde(rename = "BENELUX")]
+    #[strum(serialize = "BENELUX")]
     Benelux,
-    #[serde(rename = "BRETAGNE")]
+    #[strum(serialize = "BRETAGNE")]
     Bretagne,
-    #[serde(rename = "CORSE-VFR")]
+    #[strum(serialize = "CORSE-VFR")]
     CorseVfr,
-    #[serde(rename = "DEBARQUEMENT")]
+    #[strum(serialize = "DEBARQUEMENT")]
     Debarquement,
-    #[serde(rename = "DIRNC-DOMAINE LOCAL MAGENTA")]
+    #[strum(serialize = "DIRNC-DOMAINE LOCAL MAGENTA")]
     DirncDomaineLocalMagenta,
-    #[serde(rename = "DIRNC-DOMAINE LOCAL-WALLIS")]
+    #[strum(serialize = "DIRNC-DOMAINE LOCAL-WALLIS")]
     DirncDomaineLocalWallis,
-    #[serde(rename = "ESPAGNE VFR")]
+    #[strum(serialize = "ESPAGNE VFR")]
     EspagneVfr,
-    #[serde(rename = "FRANCE BASSES COUCHES")]
+    #[strum(serialize = "FRANCE BASSES COUCHES")]
     FranceBasseCouches,
     #[default]
-    #[serde(rename = "GRAND SUD OUEST FRANCE")]
+    #[strum(serialize = "GRAND SUD OUEST FRANCE")]
     GrandSudOuestFrance,
-    #[serde(rename = "GRAND TOULOUSE")]
+    #[strum(serialize = "GRAND TOULOUSE")]
     GrandToulouse,
-    #[serde(rename = "GUYANE")]
+    #[strum(serialize = "GUYANE")]
     Guyane,
-    #[serde(rename = "ILE DE FRANCE-BOURGOGNE")]
+    #[strum(serialize = "ILE DE FRANCE-BOURGOGNE")]
     IleDeFranceBourgogne,
-    #[serde(rename = "ILE DE FRANCE-CENTRE ET PAYS DE LOIRE")]
+    #[strum(serialize = "ILE DE FRANCE-CENTRE ET PAYS DE LOIRE")]
     IleDeFranceCentreEtPaysDeLoire,
-    #[serde(rename = "ILE DE FRANCE-CHAMPAGNE-ARDENNES")]
+    #[strum(serialize = "ILE DE FRANCE-CHAMPAGNE-ARDENNES")]
     IleDeFranceChampagneArdennes,
-    #[serde(rename = "ILE DE FRANCE-GRAND PARIS")]
+    #[strum(serialize = "ILE DE FRANCE-GRAND PARIS")]
     IleDeFranceGrandParis,
-    #[serde(rename = "ILE DE FRANCE-NORMANDIE ET NORD")]
+    #[strum(serialize = "ILE DE FRANCE-NORMANDIE ET NORD")]
     IleDeFranceNormandieEtNord,
-    #[serde(rename = "MASSIF CENTRAL")]
+    #[strum(serialize = "MASSIF CENTRAL")]
     MassifCentral,
-    #[serde(rename = "MISTRAL")]
+    #[strum(serialize = "MISTRAL")]
     Mistral,
-    #[serde(rename = "NORD EST FRANCE")]
+    #[strum(serialize = "NORD EST FRANCE")]
     NordEstFrance,
-    #[serde(rename = "OCCITANIE")]
+    #[strum(serialize = "OCCITANIE")]
     Occitanie,
-    #[serde(rename = "PARIS-AGEN")]
+    #[strum(serialize = "PARIS-AGEN")]
     ParisAgen,
-    #[serde(rename = "REUNION-MASCAREIGNES")]
+    #[strum(serialize = "REUNION-MASCAREIGNES")]
     ReunionMascareignes,
-    #[serde(rename = "SUD EST FRANCE")]
+    #[strum(serialize = "SUD EST FRANCE")]
     SudEstFrance,
-    #[serde(rename = "SUD OUEST FRANCE (ZONES VFR 11 ET 12)")]
+    #[strum(serialize = "SUD OUEST FRANCE (ZONES VFR 11 ET 12)")]
     SudOuestFranceVfr11Et12,
-    #[serde(rename = "SUISSE")]
+    #[strum(serialize = "SUISSE")]
     Suisse,
-    #[serde(rename = "TROYES-EUROPE")]
+    #[strum(serialize = "TROYES-EUROPE")]
     TroyesEurope,
-    #[serde(rename = "TROYES-FRANCE")]
+    #[strum(serialize = "TROYES-FRANCE")]
     TroyesFrance,
-    #[serde(rename = "TROYES-REGION")]
+    #[strum(serialize = "TROYES-REGION")]
     TroyesRegion,
 
     // Europe
-    #[serde(rename = "ANGLETERRE")]
+    #[strum(serialize = "ANGLETERRE")]
     Angleterre,
-    #[serde(rename = "ATHENES")]
+    #[strum(serialize = "ATHENES")]
     Athenes,
-    #[serde(rename = "BALEARES")]
+    #[strum(serialize = "BALEARES")]
     Baleares,
-    #[serde(rename = "BELGIQUE")]
+    #[strum(serialize = "BELGIQUE")]
     Belgique,
-    #[serde(rename = "CANARIES")]
+    #[strum(serialize = "CANARIES")]
     Canaries,
-    #[serde(rename = "CORSE")]
+    #[strum(serialize = "CORSE")]
     Corse,
-    #[serde(rename = "ESPAGNE")]
+    #[strum(serialize = "ESPAGNE")]
     Espagne,
-    #[serde(rename = "EUROPE DU NORD")]
+    #[strum(serialize = "EUROPE DU NORD")]
     EuropeDuNord,
-    #[serde(rename = "EUROPE DU SUD")]
+    #[strum(serialize = "EUROPE DU SUD")]
     EuropeDuSud,
-    #[serde(rename = "FRANCE METROPOLITAINE")]
+    #[strum(serialize = "FRANCE METROPOLITAINE")]
     FranceMetropolitaine,
-    #[serde(rename = "ITALIE")]
+    #[strum(serialize = "ITALIE")]
     Italie,
-    #[serde(rename = "POLOGNE")]
+    #[strum(serialize = "POLOGNE")]
     Pologne,
-    #[serde(rename = "PORTUGAL")]
+    #[strum(serialize = "PORTUGAL")]
     Portugal,
+
+    // Africa - Indian Ocean
+    #[strum(serialize = "AFRIQUE DU NORD")]
+    AfriqueDuNord,
+    #[strum(serialize = "AFRIQUE OCCIDENTALE")]
+    AfriqueOccidentale,
+    #[strum(serialize = "DJERBA")]
+    Djerba,
+    #[strum(serialize = "MONASTIR")]
+    Monastir,
+    #[strum(serialize = "OCEAN INDIEN")]
+    OceanIndien,
+    #[strum(serialize = "REUNION-AFRIQUE")]
+    ReunionAfrique,
+    #[strum(serialize = "REUNION-AFRIQUE DU SUD")]
+    ReunionAfriqueDuSud,
+    #[strum(serialize = "REUNION-ASIE-AUSTRALIE")]
+    ReunionAsieAustralie,
+    #[strum(serialize = "REUNION-EUROPE")]
+    ReunionEurope,
+    #[strum(serialize = "REUNION-INDES")]
+    ReunionIndes,
+
+    // Americas
+    #[strum(serialize = "ANTIL-GUY")]
+    AntilGuy,
+    #[strum(serialize = "ANTIL-GUY VERS AMERIQUE NORD ET CENTRALE")]
+    AntilGuyVersAmeriqueNordEtCentrale,
+    #[strum(serialize = "ANTIL-GUY VERS AMERIQUE SUD")]
+    AntilGuyVersAmeriqueSud,
+    #[strum(serialize = "ANTIL-GUY VERS EUROPE")]
+    AntilGuyVersEurope,
+    #[strum(serialize = "BRESIL")]
+    Bresil,
+    #[strum(serialize = "ETATS-UNIS (EST) ET CANADA")]
+    EtatsUnisEstEtCanada,
+    #[strum(serialize = "ETATS-UNIS (OUEST)")]
+    EtatsUnisOuest,
+    #[strum(serialize = "FLORIDE ET MEXIQUE")]
+    FlorideEtMexique,
+    #[strum(serialize = "ST-PIERRE-MIQUELON EST USA")]
+    StPierreMiquelonEstUsa,
+    #[strum(serialize = "ST-PIERRE-MIQUELON TRANSAL")]
+    StPierreMiquelonTransal,
+
+    // Asia
+    #[strum(serialize = "BEYROUTH")]
+    Beyrouth,
+    #[strum(serialize = "CHINE")]
+    Chine,
+    #[strum(serialize = "DAMAS")]
+    Damas,
+    #[strum(serialize = "JAPON")]
+    Japon,
+    #[strum(serialize = "MOYEN ORIENT")]
+    MoyenOrient,
+    #[strum(serialize = "NAIROBI")]
+    Nairobi,
+    #[strum(serialize = "RAMSTEIN-INCIRLIK-ISLAMABAD")]
+    RamsteinIncirlikIslamabad,
+    #[strum(serialize = "TADJIKISTAN")]
+    Tadjikistan,
+
+    // Oceania
+    #[strum(serialize = "DIRNC-TONTOUTA-AUSTRALIE")]
+    DirncTontoutaAustralie,
+    #[strum(serialize = "DIRNC-TONTOUTA-JAPON")]
+    DirncTontoutaJapon,
+    #[strum(serialize = "DIRNC-TONTOUTA-NANDI-WALLIS")]
+    DirncTontoutaNandiWallis,
+    #[strum(serialize = "DIRNC-TONTOUTA-NORFOLK")]
+    DirncTontoutaNorfolk,
+    #[strum(serialize = "DIRNC-TONTOUTA-NOUVELLE ZELANDE")]
+    DirncTontoutaNouvelleZelande,
+    #[strum(serialize = "DIRNC-TONTOUTA-SAIPAN")]
+    DirncTontoutaSaipan,
+    #[strum(serialize = "DIRNC-TONTOUTA-TAHITI")]
+    DirncTontoutaTahiti,
+    #[strum(serialize = "TAHITI-AUCKLAND")]
+    TahitiAuckland,
+    #[strum(serialize = "TAHITI-HONOLULU")]
+    TahitiHonolulu,
+    #[strum(serialize = "TAHITI-ILE DE PAQUES")]
+    TahitiIleDePaques,
+    #[strum(serialize = "TAHITI-JAPON")]
+    TahitiJapon,
+    #[strum(serialize = "TAHITI-LOS ANGELES")]
+    TahitiLosAngeles,
+    #[strum(serialize = "TAHITI-NEW-YORK")]
+    TahitiNewYork,
+    #[strum(serialize = "TAHITI-NOUMEA")]
+    TahitiNoumea,
+    #[strum(serialize = "TAHITI-POLYNESIE FRANCAISE")]
+    TahitiPolynesieFrancaise,
+    #[strum(serialize = "TAHITI-SYDNEY")]
+    TahitiSydney,
 }
 
 #[derive(Debug, Deserialize)]
@@ -137,6 +220,38 @@ pub struct Dossier {
 
     #[serde(default, rename = "TCAG")]
     pub tcags: Vec<Tcag>,
+}
+
+impl Dossier {
+    /// Retrieves pre-established flight plans
+    /// Definition file : <https://aviation.meteo.fr/FR/aviation/XSD/dossier.xsd>
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if the request fails or the XML cannot be parsed.
+    ///
+    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Dossier, Aeroweb> {
+        let type_donnees = "DOSSIER";
+        let params = format!("DESTINATION={}", options.destination.unwrap_or_default());
+
+        let res = client
+            .http_client
+            .get(client.get_url(type_donnees, &params))
+            .send()
+            .await?;
+
+        Dossier::parse(&res.text().await?)
+    }
+
+    /// Parses the XML string into a `Dossier` struct.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if the XML string cannot be parsed.
+    ///
+    pub fn parse(xml: &str) -> Result<Dossier, Aeroweb> {
+        Ok(quick_xml::de::from_str(xml)?)
+    }
 }
 
 #[derive(Debug, Deserialize)]
@@ -232,7 +347,7 @@ mod tests {
     #[test]
     fn test_dossier() {
         let data = std::fs::read_to_string("./data/dossier.xml").unwrap();
-        let res = parse(&data);
+        let res = Dossier::parse(&data);
 
         assert!(res.is_ok());
     }

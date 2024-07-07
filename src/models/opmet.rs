@@ -6,6 +6,9 @@ use serde::Deserialize;
 
 #[derive(Debug)]
 pub struct RequestOptions {
+    /// List of OACI codes of the airports
+    /// e.g. `OaciAirport::LFBO`, `OaciAirport::LFBA`
+    /// Maximum 50 airports
     pub airports: Vec<OaciAirport>,
 }
 
@@ -21,6 +24,7 @@ impl Opmet {
     /// # Errors
     ///
     /// Returns an error if the request fails or the XML cannot be parsed.
+    ///
     pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Opmet, Aeroweb> {
         if options.airports.is_empty() || options.airports.len() > 50 {
             return Err(Aeroweb::InvalidOptions(
