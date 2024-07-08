@@ -1,27 +1,82 @@
 use crate::error::Aeroweb;
 use crate::models::helpers::{de_option_link, de_option_string};
+use crate::types::client::Client;
 use serde::Deserialize;
 
-/// Retrieves volcanic hash warning graphics for a list of producing centers:
-/// - FMEE (La Réunion)
-/// - RJTD (Tokyo)
-// Definition file : https://aviation.meteo.fr/FR/aviation/XSD/vag.xsd
-// pub fn fetch() -> Result<Vag, AerowebError> {}
+#[derive(Debug)]
+pub struct RequestOptions {
+    /// List of OACI codes of producing centers
+    pub airports: Vec<RequestAirport>,
+}
 
-/// Parses the XML string into a `Vag` struct.
-///
-/// # Errors
-///
-/// Returns an error if the XML string cannot be parsed.
-///
-pub fn parse(xml: &str) -> Result<Vag, Aeroweb> {
-    Ok(quick_xml::de::from_str(xml)?)
+#[derive(Debug, strum::Display)]
+pub enum RequestAirport {
+    /// Anchorage
+    PAWU,
+    /// Darwin
+    ADRM,
+    /// London
+    EGRR,
+    /// Montreal
+    CWAO,
+    /// Tokyo
+    RJTD,
+    /// Toulouse
+    LFPW,
+    /// Washington
+    KNES,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct Vag {
     #[serde(default, rename = "VAG")]
     pub centers: Vec<Center>,
+}
+
+impl Vag {
+    /// Retrieves volcanic hash warning graphics for a list of producing centers.
+    /// Definition file : <https://aviation.meteo.fr/FR/aviation/XSD/vag.xsd>
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if the request fails or the XML cannot be parsed.
+    ///
+    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Vag, Aeroweb> {
+        if options.airports.is_empty() {
+            return Err(Aeroweb::InvalidOptions(
+                "RequestOptions.airports must be at least 1".to_string(),
+            ));
+        }
+
+        let type_donnees = "VAG";
+        let params = format!(
+            "LIEUID={}",
+            options
+                .airports
+                .iter()
+                .map(std::string::ToString::to_string)
+                .collect::<Vec<_>>()
+                .join("|")
+        );
+
+        let res = client
+            .http_client
+            .get(client.get_url(type_donnees, &params))
+            .send()
+            .await?;
+
+        Vag::parse(&res.text().await?)
+    }
+
+    /// Parses the XML string into a `Vag` struct.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if the XML string cannot be parsed.
+    ///
+    fn parse(xml: &str) -> Result<Vag, Aeroweb> {
+        Ok(quick_xml::de::from_str(xml)?)
+    }
 }
 
 #[derive(Debug, Deserialize)]
@@ -49,7 +104,7 @@ mod tests {
     #[test]
     fn test_dossier() {
         let data = std::fs::read_to_string("./data/vag.xml").unwrap();
-        let res = parse(&data);
+        let res = Vag::parse(&data);
 
         assert!(res.is_ok());
     }

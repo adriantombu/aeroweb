@@ -1,32 +1,82 @@
 use crate::error::Aeroweb;
 use crate::models::helpers::de_option_string;
+use crate::types::client::Client;
 use serde::Deserialize;
 
-/// Retrieves tropical cyclone warning messages for a list of producing centers:
-/// - FMEE (La Réunion)
-/// - KNHC (Miami)
-/// - RJTD (Tokyo)
-/// - PHFO (Honolulu)
-/// - VIDP (New Delhi)
-/// - NFFN (Nadi)
-/// - ADRM (Darwin)
-// Definition file : https://aviation.meteo.fr/FR/aviation/XSD/tca.xsd
-// pub fn fetch() -> Result<Tca, AerowebError> {}
+#[derive(Debug)]
+pub struct RequestOptions {
+    /// List of OACI codes of producing centers
+    pub airports: Vec<RequestAirport>,
+}
 
-/// Parses the XML string into a `Tca` struct.
-///
-/// # Errors
-///
-/// Returns an error if the XML string cannot be parsed.
-///
-pub fn parse(xml: &str) -> Result<Tca, Aeroweb> {
-    Ok(quick_xml::de::from_str(xml)?)
+#[derive(Debug, strum::Display)]
+pub enum RequestAirport {
+    /// La Réunion
+    FMEE,
+    /// Miami
+    KNHC,
+    /// Tokyo
+    RJTD,
+    /// Honolulu
+    PHFO,
+    /// New Delhi
+    VIDP,
+    /// Nadi
+    NFFN,
+    /// Darwin
+    ADRM,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct Tca {
     #[serde(default, rename = "messages")]
     pub centers: Vec<Center>,
+}
+
+impl Tca {
+    /// Retrieves tropical cyclone warning messages for a list of producing centers.
+    /// Definition file : <https://aviation.meteo.fr/FR/aviation/XSD/tca.xsd>
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if the request fails or the XML cannot be parsed.
+    ///
+    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Tca, Aeroweb> {
+        if options.airports.is_empty() {
+            return Err(Aeroweb::InvalidOptions(
+                "RequestOptions.airports must be at least 1".to_string(),
+            ));
+        }
+
+        let type_donnees = "TCA";
+        let params = format!(
+            "LIEUID={}",
+            options
+                .airports
+                .iter()
+                .map(std::string::ToString::to_string)
+                .collect::<Vec<_>>()
+                .join("|")
+        );
+
+        let res = client
+            .http_client
+            .get(client.get_url(type_donnees, &params))
+            .send()
+            .await?;
+
+        Tca::parse(&res.text().await?)
+    }
+
+    /// Parses the XML string into a `Tca` struct.
+    ///
+    /// # Errors
+    ///
+    /// Returns an error if the XML string cannot be parsed.
+    ///
+    fn parse(xml: &str) -> Result<Tca, Aeroweb> {
+        Ok(quick_xml::de::from_str(xml)?)
+    }
 }
 
 #[derive(Debug, Deserialize)]
@@ -64,7 +114,7 @@ mod tests {
     #[test]
     fn test_dossier() {
         let data = std::fs::read_to_string("./data/tca.xml").unwrap();
-        let res = parse(&data);
+        let res = Tca::parse(&data);
 
         assert!(res.is_ok());
     }

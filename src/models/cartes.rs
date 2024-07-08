@@ -200,7 +200,7 @@ impl Cartes {
     ///
     /// Returns an error if the XML string cannot be parsed.
     ///
-    pub fn parse(xml: &str) -> Result<Cartes, Aeroweb> {
+    fn parse(xml: &str) -> Result<Cartes, Aeroweb> {
         Ok(quick_xml::de::from_str(xml)?)
     }
 }

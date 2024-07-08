@@ -59,7 +59,7 @@ impl Maa {
     ///
     /// Returns an error if the XML string cannot be parsed.
     ///
-    pub fn parse(xml: &str) -> Result<Maa, Aeroweb> {
+    fn parse(xml: &str) -> Result<Maa, Aeroweb> {
         quick_xml::de::from_str(xml).map_err(Aeroweb::Deserialize)
     }
 }

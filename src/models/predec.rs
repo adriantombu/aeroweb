@@ -5,28 +5,27 @@ use serde::Deserialize;
 
 #[derive(Debug)]
 pub struct RequestOptions {
-    /// List of OACI codes of the airports
-    /// Only the following stations emit PREDEC:
-    /// - CDG (LFPG)
-    /// - Orly (LFPO)
-    /// - Cayenne (SOCA)
-    /// - Fort de France (TFFF)
-    /// - Pointe à pitre (TFFR)
-    /// - Saint Denis (FMEE)
-    /// - Nouméa (NWWW)
-    /// - Tahiti (NTAA)
+    /// List of OACI codes of airports emitting PREDEC
     pub airports: Vec<RequestAirport>,
 }
 
 #[derive(Debug, strum::Display)]
 pub enum RequestAirport {
+    /// CDG
     LFPG,
+    /// Orly
     LFPO,
+    /// Cayenne
     SOCA,
+    /// Fort de France
     TFFF,
+    /// Pointe à pitre
     TFFR,
+    /// Saint Denis
     FMEE,
+    /// Nouméa
     NWWW,
+    /// Tahiti
     NTAA,
 }
 
@@ -77,7 +76,7 @@ impl Predec {
     ///
     /// Returns an error if the XML string cannot be parsed.
     ///
-    pub fn parse(xml: &str) -> Result<Predec, Aeroweb> {
+    fn parse(xml: &str) -> Result<Predec, Aeroweb> {
         Ok(quick_xml::de::from_str(xml)?)
     }
 }

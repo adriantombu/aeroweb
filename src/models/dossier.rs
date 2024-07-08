@@ -249,7 +249,7 @@ impl Dossier {
     ///
     /// Returns an error if the XML string cannot be parsed.
     ///
-    pub fn parse(xml: &str) -> Result<Dossier, Aeroweb> {
+    fn parse(xml: &str) -> Result<Dossier, Aeroweb> {
         Ok(quick_xml::de::from_str(xml)?)
     }
 }
