@@ -7,11 +7,11 @@ use serde::Deserialize;
 /// Maximum of 50 airports and FIRs combined
 pub struct RequestOptions {
     /// List of OACI codes of the airports
-    /// e.g. `OaciAirport::LFBO`, `OaciAirport::LFBA`
+    /// e.g. `Airport::LFBO`, `Airport::LFBA`
     pub airports: Vec<Airport>,
 
     /// List of OACI codes of the Flight Information Regions
-    /// e.g. `OaciFir::LFBB`, `OaciFir::EBBU`
+    /// e.g. `Fir::LFBB`, `Fir::EBBU`
     pub firs: Vec<Fir>,
 }
 

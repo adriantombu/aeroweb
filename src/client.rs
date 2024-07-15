@@ -1,6 +1,5 @@
 use crate::error::Error;
 use crate::helpers::parse;
-use reqwest::Response;
 
 #[derive(Debug)]
 pub struct Client {
@@ -34,7 +33,7 @@ impl Client {
     ) -> Result<crate::flight_plan::FlightPlan, Error> {
         let params = format!("DESTINATION={}", options.destination.unwrap_or_default());
 
-        parse(&self.fetch("DOSSIER", &params).await?.text().await?)
+        parse(&self.fetch("DOSSIER", &params).await?)
     }
 
     /// Retrieves MAAs (Messages d'Avertissement d'Aérodromes) from the last 48 hours. Only French
@@ -65,7 +64,7 @@ impl Client {
                 .join("|")
         );
 
-        parse(&self.fetch("MAA", &params).await?.text().await?)
+        parse(&self.fetch("MAA", &params).await?)
     }
 
     /// Retrieves a list of aeronautical maps (TEMSI et WINTEM).
@@ -88,7 +87,7 @@ impl Client {
             )
         };
 
-        parse(&self.fetch("CARTES", &params).await?.text().await?)
+        parse(&self.fetch("CARTES", &params).await?)
     }
 
     /// Retrieves OPMET data (METAR, SPECI, TAF, SIGMET, ...) for a list of airports (50 max for
@@ -118,7 +117,7 @@ impl Client {
                 .join("|")
         );
 
-        parse(&self.fetch("OPMET2", &params).await?.text().await?)
+        parse(&self.fetch("OPMET2", &params).await?)
     }
 
     /// Retrieves PREDECs (`PREvision DECollage`).
@@ -148,7 +147,7 @@ impl Client {
                 .join("|")
         );
 
-        parse(&self.fetch("PREDEC", &params).await?.text().await?)
+        parse(&self.fetch("PREDEC", &params).await?)
     }
 
     /// Retrieves SIGMETs and/or AIRMETs and/or GAMETs for a list of FIR and/or airports
@@ -189,7 +188,7 @@ impl Client {
 
         let params = format!("LIEUID={}", places.join("|"));
 
-        parse(&self.fetch("SIGMET2", &params).await?.text().await?)
+        parse(&self.fetch("SIGMET2", &params).await?)
     }
 
     /// Retrieves Space Weather Advisories
@@ -200,7 +199,7 @@ impl Client {
     /// Returns an error if the request fails or the XML cannot be parsed.
     ///
     pub async fn get_sw(&self) -> Result<crate::sw::SpaceWeather, Error> {
-        parse(&self.fetch("SW", "").await?.text().await?)
+        parse(&self.fetch("SW", "").await?)
     }
 
     /// Retrieves tropical cyclone warning messages for a list of producing centers.
@@ -230,7 +229,7 @@ impl Client {
                 .join("|")
         );
 
-        parse(&self.fetch("TCA", &params).await?.text().await?)
+        parse(&self.fetch("TCA", &params).await?)
     }
 
     /// Retrieves tropical cyclone warning graphics for a list of producing centers.
@@ -260,7 +259,7 @@ impl Client {
                 .join("|")
         );
 
-        parse(&self.fetch("TCAG", &params).await?.text().await?)
+        parse(&self.fetch("TCAG", &params).await?)
     }
 
     /// Retrieves volcanic ash warning messages for a list of producing centers.
@@ -290,7 +289,7 @@ impl Client {
                 .join("|")
         );
 
-        parse(&self.fetch("VAA", &params).await?.text().await?)
+        parse(&self.fetch("VAA", &params).await?)
     }
 
     /// Retrieves volcanic hash warning graphics for a list of producing centers.
@@ -320,17 +319,27 @@ impl Client {
                 .join("|")
         );
 
-        parse(&self.fetch("VAG", &params).await?.text().await?)
+        parse(&self.fetch("VAG", &params).await?)
     }
 
     /// Retrieves the data from the API
     ///
-    async fn fetch(&self, data_type: &str, params: &str) -> Result<Response, reqwest::Error> {
-        let url = format!(
-            "{}?ID={}&TYPE_DONNEES={data_type}&{params}",
-            self.api_base_url, self.api_key
-        );
+    async fn fetch(&self, data_type: &str, params: &str) -> Result<String, Error> {
+        let res = self
+            .http_client
+            .get(format!(
+                "{}?ID={}&TYPE_DONNEES={data_type}&{params}",
+                self.api_base_url, self.api_key
+            ))
+            .send()
+            .await?
+            .text()
+            .await?;
 
-        self.http_client.get(url).send().await
+        if res.contains("<code>NOK</code>") {
+            return Err(Error::InvalidApiKey);
+        }
+
+        Ok(res)
     }
 }

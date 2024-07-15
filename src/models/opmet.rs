@@ -5,7 +5,7 @@ use serde::Deserialize;
 #[derive(Debug)]
 pub struct RequestOptions {
     /// List of OACI codes of the airports
-    /// e.g. `OaciAirport::LFBO`, `OaciAirport::LFBA`
+    /// e.g. `Airport::LFBO`, `Airport::LFBA`
     /// Maximum 50 airports
     pub airports: Vec<Airport>,
 }

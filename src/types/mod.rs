@@ -1,6 +1,5 @@
 pub mod airport;
 pub mod center;
-pub mod client;
 pub mod error;
 pub mod fir;
 pub mod map;
