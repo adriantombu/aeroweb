@@ -1,7 +1,7 @@
-use crate::error::Aeroweb;
-use crate::models::helpers::de_option_string;
-use crate::types::client::Client;
-use crate::types::oaci_airport::OaciAirport;
+use crate::airport::Airport;
+use crate::client::Client;
+use crate::error::Error;
+use crate::oaci_multiple::OaciMultiple;
 use serde::Deserialize;
 
 #[derive(Debug)]
@@ -9,13 +9,13 @@ pub struct RequestOptions {
     /// List of OACI codes of the airports
     /// e.g. `OaciAirport::LFBO`, `OaciAirport::LFBA`
     /// Maximum 50 airports
-    pub airports: Vec<OaciAirport>,
+    pub airports: Vec<Airport>,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct Maa {
     #[serde(default, rename = "messages")]
-    pub airports: Vec<Airport>,
+    pub reports: Vec<OaciMultiple>,
 }
 
 impl Maa {
@@ -26,9 +26,9 @@ impl Maa {
     ///
     /// Returns an error if the request fails or the XML cannot be parsed.
     ///
-    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Maa, Aeroweb> {
+    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Maa, Error> {
         if options.airports.is_empty() || options.airports.len() > 50 {
-            return Err(Aeroweb::InvalidOptions(
+            return Err(Error::InvalidOptions(
                 "RequestOptions.airports must be between 1 and 50".to_string(),
             ));
         }
@@ -59,37 +59,9 @@ impl Maa {
     ///
     /// Returns an error if the XML string cannot be parsed.
     ///
-    fn parse(xml: &str) -> Result<Maa, Aeroweb> {
-        quick_xml::de::from_str(xml).map_err(Aeroweb::Deserialize)
+    fn parse(xml: &str) -> Result<Maa, Error> {
+        quick_xml::de::from_str(xml).map_err(Error::Deserialize)
     }
-}
-
-#[derive(Debug, Deserialize)]
-pub struct Airport {
-    /// e.g. LFBO, LFBA
-    #[serde(rename = "@oaci")]
-    pub oaci: String,
-
-    /// e.g. TOULOUSE BLAGNAC, AGEN LA GARENNE
-    #[serde(rename = "@nom")]
-    pub nom: String,
-
-    pub message: Message,
-}
-
-#[derive(Debug, Deserialize)]
-pub struct Message {
-    /// e.g. MAA
-    #[serde(rename = "@type")]
-    pub r#type: String,
-
-    /// e.g. 20240620210000
-    #[serde(rename = "@date_reception", deserialize_with = "de_option_string")]
-    pub date_reception: Option<String>,
-
-    /// e.g. LFBZ AD WRNG 2 VALID 252200/260000 CNL AD WRNG 1 251900/260000=
-    #[serde(default, deserialize_with = "de_option_string")]
-    pub texte: Option<String>,
 }
 
 #[cfg(test)]
@@ -97,10 +69,44 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_dossier() {
+    fn test_maa() {
         let data = std::fs::read_to_string("./data/maa.xml").unwrap();
         let res = Maa::parse(&data);
 
         assert!(res.is_ok());
+
+        let data = res.unwrap();
+
+        assert_eq!(data.reports.len(), 5);
+
+        let report = &data.reports[0];
+        assert_eq!(report.oaci, "LFLY");
+        assert_eq!(report.name, "LYON BRON");
+        assert_eq!(report.messages.len(), 3);
+        assert_eq!(report.messages[0].category, "MAA");
+        assert_eq!(
+            report.messages[0].reception_date,
+            Some(String::from("20240715124000"))
+        );
+        assert!(report.messages[0].text.is_some());
+        assert_eq!(report.messages[1].category, "MAA");
+        assert_eq!(
+            report.messages[1].reception_date,
+            Some(String::from("20240715124000"))
+        );
+        assert!(report.messages[1].text.is_some());
+
+        let report2 = &data.reports[1];
+        assert_eq!(report2.oaci, "LFPG");
+        assert_eq!(report2.name, "PARIS CHARLES DE GAULLE");
+        assert_eq!(report2.messages.len(), 3);
+
+        let report3 = &data.reports[2];
+        assert_eq!(report3.oaci, "LFBO");
+        assert_eq!(report3.name, "TOULOUSE BLAGNAC");
+        assert_eq!(report3.messages.len(), 1);
+        assert_eq!(report3.messages[0].category, "MAA");
+        assert!(report3.messages[0].reception_date.is_none());
+        assert!(report3.messages[0].text.is_none());
     }
 }

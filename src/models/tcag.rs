@@ -1,16 +1,16 @@
-use crate::error::Aeroweb;
-use crate::models::helpers::{de_option_link, de_option_string};
-use crate::types::client::Client;
+use crate::center::Center;
+use crate::client::Client;
+use crate::error::Error;
 use serde::Deserialize;
 
 #[derive(Debug)]
 pub struct RequestOptions {
     /// List of OACI codes of producing centers
-    pub airports: Vec<RequestAirport>,
+    pub airports: Vec<AirportOption>,
 }
 
 #[derive(Debug, strum::Display)]
-pub enum RequestAirport {
+pub enum AirportOption {
     /// La Réunion
     FMEE,
     /// Tokyo
@@ -20,7 +20,7 @@ pub enum RequestAirport {
 #[derive(Debug, Deserialize)]
 pub struct Tcag {
     #[serde(default, rename = "TCAG")]
-    pub centers: Vec<Center>,
+    pub reports: Vec<Center>,
 }
 
 impl Tcag {
@@ -31,9 +31,9 @@ impl Tcag {
     ///
     /// Returns an error if the request fails or the XML cannot be parsed.
     ///
-    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Tcag, Aeroweb> {
+    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Tcag, Error> {
         if options.airports.is_empty() {
-            return Err(Aeroweb::InvalidOptions(
+            return Err(Error::InvalidOptions(
                 "RequestOptions.airports must be at least 1".to_string(),
             ));
         }
@@ -64,27 +64,9 @@ impl Tcag {
     ///
     /// Returns an error if the XML string cannot be parsed.
     ///
-    fn parse(xml: &str) -> Result<Tcag, Aeroweb> {
+    fn parse(xml: &str) -> Result<Tcag, Error> {
         Ok(quick_xml::de::from_str(xml)?)
     }
-}
-
-#[derive(Debug, Deserialize)]
-pub struct Center {
-    /// e.g. FMEE, RJTD
-    #[serde(rename = "@oaci")]
-    pub oaci: String,
-
-    /// e.g. LA REUNION, TOKYO
-    #[serde(rename = "@nom")]
-    pub nom: String,
-
-    /// e.g. 20240620210000
-    #[serde(rename = "@date_reception", deserialize_with = "de_option_string")]
-    pub date_reception: Option<String>,
-
-    #[serde(default, deserialize_with = "de_option_link")]
-    pub lien: Option<String>,
 }
 
 #[cfg(test)]
@@ -92,10 +74,26 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_dossier() {
+    fn test_tcag() {
         let data = std::fs::read_to_string("./data/tcag.xml").unwrap();
         let res = Tcag::parse(&data);
 
         assert!(res.is_ok());
+
+        let data = res.unwrap();
+
+        assert_eq!(data.reports.len(), 2);
+
+        let report = &data.reports[0];
+        assert_eq!(report.oaci, "FMEE");
+        assert_eq!(report.name, "LA REUNION");
+        assert!(report.reception_date.is_none());
+        assert!(report.link.is_none());
+
+        let report2 = &data.reports[1];
+        assert_eq!(report2.oaci, "RJTD");
+        assert_eq!(report2.name, "TOKYO");
+        assert!(report2.reception_date.is_none());
+        assert!(report2.link.is_none());
     }
 }

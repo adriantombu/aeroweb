@@ -1,16 +1,18 @@
-use crate::error::Aeroweb;
-use crate::models::helpers::{de_option_link, de_option_string};
-use crate::types::client::Client;
+use crate::center::Center;
+use crate::client::Client;
+use crate::error::Error;
+use crate::helpers::{de_option_link, de_option_string};
+use crate::map::Map;
 use serde::Deserialize;
 
 #[derive(Debug, Default)]
 pub struct RequestOptions {
     /// Default is `Destination::GrandSudOuestFrance`
-    pub destination: Option<Destination>,
+    pub destination: Option<DestinationOption>,
 }
 
 #[derive(Debug, Default, strum::Display)]
-pub enum Destination {
+pub enum DestinationOption {
     // Light aviation
     #[strum(serialize = "ALPES")]
     Alpes,
@@ -200,29 +202,29 @@ pub enum Destination {
 }
 
 #[derive(Debug, Deserialize)]
-pub struct Dossier {
+pub struct FlightPlan {
     /// e.g. SUD EST FRANCE
     #[serde(rename = "@id")]
-    pub id: String,
+    pub name: String,
 
     /// e.g. <https://aviation.meteo.fr/...>
     #[serde(rename = "@lienPDF", deserialize_with = "de_option_link")]
-    pub lien: Option<String>,
+    pub link: Option<String>,
 
     #[serde(default, rename = "message")]
     pub messages: Vec<Message>,
 
     #[serde(default, rename = "carte")]
-    pub cartes: Vec<Carte>,
+    pub maps: Vec<Map>,
 
     #[serde(default, rename = "VAG")]
-    pub vags: Vec<Vag>,
+    pub vags: Vec<Center>,
 
     #[serde(default, rename = "TCAG")]
-    pub tcags: Vec<Tcag>,
+    pub tcags: Vec<Center>,
 }
 
-impl Dossier {
+impl FlightPlan {
     /// Retrieves pre-established flight plans
     /// Definition file : <https://aviation.meteo.fr/FR/aviation/XSD/dossier.xsd>
     ///
@@ -230,7 +232,7 @@ impl Dossier {
     ///
     /// Returns an error if the request fails or the XML cannot be parsed.
     ///
-    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Dossier, Aeroweb> {
+    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<FlightPlan, Error> {
         let type_donnees = "DOSSIER";
         let params = format!("DESTINATION={}", options.destination.unwrap_or_default());
 
@@ -240,7 +242,7 @@ impl Dossier {
             .send()
             .await?;
 
-        Dossier::parse(&res.text().await?)
+        FlightPlan::parse(&res.text().await?)
     }
 
     /// Parses the XML string into a `Dossier` struct.
@@ -249,7 +251,7 @@ impl Dossier {
     ///
     /// Returns an error if the XML string cannot be parsed.
     ///
-    fn parse(xml: &str) -> Result<Dossier, Aeroweb> {
+    fn parse(xml: &str) -> Result<FlightPlan, Error> {
         Ok(quick_xml::de::from_str(xml)?)
     }
 }
@@ -258,7 +260,7 @@ impl Dossier {
 pub struct Message {
     /// e.g. METAR, TAFL
     #[serde(rename = "@type")]
-    pub r#type: String,
+    pub category: String,
 
     /// e.g. LFTW, LFKS
     #[serde(rename = "@oaci")]
@@ -266,78 +268,11 @@ pub struct Message {
 
     /// e.g. NIMES GARONS, SOLENZARA
     #[serde(rename = "@nom")]
-    pub nom: String,
+    pub name: String,
 
     /// e.g. METAR LFTW 201530Z AUTO 04007KT 010V070 9999 -RA FEW032///\nSCT048/// BKN130/// ///CB 22/19 Q1015 BECMG NSC=
-    #[serde(default, deserialize_with = "de_option_string")]
-    pub texte: Option<String>,
-}
-
-#[derive(Debug, Deserialize)]
-pub struct Carte {
-    /// e.g. WINTEM, TEMSI
-    #[serde(rename = "typecarte")]
-    pub r#type: String,
-
-    /// e.g. FL20-100, FL20-150
-    pub niveau: String,
-
-    /// e.g. FRANCE
-    pub zone: String,
-
-    /// e.g. 20 06 2024 21:00
-    pub date_run: String,
-
-    /// e.g. 20240620210000
-    pub date_echeance: String,
-
-    /// e.g. 21 UTC
-    #[serde(rename = "echeance")]
-    pub heure_echeance: String,
-
-    /// e.g. <https://aviation.meteo.fr/...>
-    #[serde(deserialize_with = "de_option_link")]
-    pub lien: Option<String>,
-}
-
-/// Volcanic ash warning graphic
-#[derive(Debug, Deserialize)]
-pub struct Vag {
-    /// e.g. LFPW, RJTD
-    #[serde(rename = "@oaci")]
-    pub oaci: String,
-
-    /// e.g. TOULOUSE, TOKYO
-    #[serde(rename = "@nom")]
-    pub nom: String,
-
-    /// e.g. NIL, 20240620210000
-    #[serde(rename = "@date_reception", deserialize_with = "de_option_string")]
-    pub date_reception: Option<String>,
-
-    /// e.g. NIL, <https://aviation.meteo.fr/...>
-    #[serde(default, deserialize_with = "de_option_link")]
-    pub lien: Option<String>,
-}
-
-/// Tropical cyclone warning graphic
-#[derive(Debug, Deserialize)]
-pub struct Tcag {
-    /// e.g. LFPW, RJTD
-    #[serde(rename = "@oaci")]
-    pub oaci: String,
-
-    /// e.g. TOULOUSE, TOKYO
-    #[serde(rename = "@nom")]
-    pub nom: String,
-
-    /// e.g. NIL, 20240620210000
-    #[serde(rename = "@date_reception", deserialize_with = "de_option_string")]
-    pub date_reception: Option<String>,
-
-    /// e.g. NIL, <https://aviation.meteo.fr/...>
-    #[serde(default, deserialize_with = "de_option_link")]
-    pub lien: Option<String>,
+    #[serde(default, rename = "texte", deserialize_with = "de_option_string")]
+    pub text: Option<String>,
 }
 
 #[cfg(test)]
@@ -345,10 +280,50 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_dossier() {
-        let data = std::fs::read_to_string("./data/dossier.xml").unwrap();
-        let res = Dossier::parse(&data);
+    fn test_flight_plan() {
+        let data = std::fs::read_to_string("./data/flight_plan.xml").unwrap();
+        let res = FlightPlan::parse(&data);
 
         assert!(res.is_ok());
+
+        let data = res.unwrap();
+
+        assert_eq!(data.name, "GRAND SUD OUEST FRANCE");
+        assert!(data.link.is_some());
+
+        assert_eq!(data.messages.len(), 56);
+
+        let message = &data.messages[0];
+        assert_eq!(message.category, "METAR");
+        assert_eq!(message.oaci, "LFBZ");
+        assert_eq!(message.name, "BIARRITZ PAYS BASQUE");
+        assert!(message.text.is_some());
+
+        let message2 = &data.messages[1];
+        assert_eq!(message2.category, "TAFL");
+        assert_eq!(message2.oaci, "LFBZ");
+        assert_eq!(message2.name, "BIARRITZ PAYS BASQUE");
+        assert!(message2.text.is_some());
+
+        assert_eq!(data.maps.len(), 4);
+
+        let map = &data.maps[0];
+        assert_eq!(map.category, "WINTEM");
+        assert_eq!(map.level, "FL20-100");
+        assert_eq!(map.zone, "FRANCE");
+        assert_eq!(map.run_date, "15 07 2024 15:00");
+        assert_eq!(map.due_date, "20240715150000");
+        assert_eq!(map.due_hour, "15 UTC");
+        assert!(map.link.is_some());
+
+        assert_eq!(data.vags.len(), 1);
+
+        let vag = &data.vags[0];
+        assert_eq!(vag.oaci, "LFPW");
+        assert_eq!(vag.name, "TOULOUSE");
+        assert!(vag.reception_date.is_none());
+        assert!(vag.link.is_none());
+
+        assert_eq!(data.tcags.len(), 0);
     }
 }

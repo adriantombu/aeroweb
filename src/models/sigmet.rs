@@ -1,8 +1,8 @@
-use crate::error::Aeroweb;
-use crate::models::helpers::de_option_string;
-use crate::types::client::Client;
-use crate::types::oaci_airport::OaciAirport;
-use crate::types::oaci_fir::OaciFir;
+use crate::airport::Airport;
+use crate::client::Client;
+use crate::error::Error;
+use crate::fir::Fir;
+use crate::helpers::de_option_string;
 use serde::Deserialize;
 
 #[derive(Debug)]
@@ -10,17 +10,17 @@ use serde::Deserialize;
 pub struct RequestOptions {
     /// List of OACI codes of the airports
     /// e.g. `OaciAirport::LFBO`, `OaciAirport::LFBA`
-    pub airports: Vec<OaciAirport>,
+    pub airports: Vec<Airport>,
 
     /// List of OACI codes of the Flight Information Regions
     /// e.g. `OaciFir::LFBB`, `OaciFir::EBBU`
-    pub firs: Vec<OaciFir>,
+    pub firs: Vec<Fir>,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct Sigmet {
     #[serde(default, rename = "FIR")]
-    pub firs: Vec<Fir>,
+    pub reports: Vec<Data>,
 }
 
 impl Sigmet {
@@ -31,11 +31,11 @@ impl Sigmet {
     ///
     /// Returns an error if the request fails or the XML cannot be parsed.
     ///
-    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Sigmet, Aeroweb> {
+    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Sigmet, Error> {
         if (options.airports.is_empty() && options.firs.is_empty())
             || (options.airports.len() + options.firs.len() > 50)
         {
-            return Err(Aeroweb::InvalidOptions(
+            return Err(Error::InvalidOptions(
                 "RequestOptions.airports and RequestOptions.first must be between 1 and 50 combined".to_string(),
             ));
         }
@@ -73,20 +73,20 @@ impl Sigmet {
     ///
     /// Returns an error if the XML string cannot be parsed.
     ///
-    fn parse(xml: &str) -> Result<Sigmet, Aeroweb> {
+    fn parse(xml: &str) -> Result<Sigmet, Error> {
         Ok(quick_xml::de::from_str(xml)?)
     }
 }
 
 #[derive(Debug, Deserialize)]
-pub struct Fir {
+pub struct Data {
     /// e.g. LFMM, EBBU
     #[serde(rename = "@oaci")]
     pub oaci: String,
 
     /// e.g. MARSEILLE, BRUSSELS
     #[serde(rename = "@nom")]
-    pub nom: String,
+    pub name: String,
 
     #[serde(rename = "SIGMET", deserialize_with = "de_option_string")]
     pub sigmet: Option<String>,
@@ -103,10 +103,35 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_dossier() {
+    fn test_sigmet() {
         let data = std::fs::read_to_string("./data/sigmet2.xml").unwrap();
         let res = Sigmet::parse(&data);
 
         assert!(res.is_ok());
+
+        let data = res.unwrap();
+
+        assert_eq!(data.reports.len(), 4);
+
+        let report = &data.reports[0];
+        assert_eq!(report.oaci, "LFMM");
+        assert_eq!(report.name, "MARSEILLE");
+        assert!(report.sigmet.is_some());
+        assert!(report.gamet.is_none());
+        assert!(report.airmet.is_none());
+
+        let report2 = &data.reports[1];
+        assert_eq!(report2.oaci, "EBBU");
+        assert_eq!(report2.name, "BRUSSELS");
+        assert!(report2.sigmet.is_none());
+        assert!(report2.gamet.is_some());
+        assert!(report2.airmet.is_none());
+
+        let report3 = &data.reports[2];
+        assert_eq!(report3.oaci, "LFRN");
+        assert_eq!(report3.name, "");
+        assert!(report3.sigmet.is_none());
+        assert!(report3.gamet.is_none());
+        assert!(report3.airmet.is_none());
     }
 }

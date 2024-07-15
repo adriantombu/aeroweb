@@ -1,6 +1,6 @@
-use crate::error::Aeroweb;
-use crate::models::helpers::de_option_link;
-use crate::types::client::Client;
+use crate::client::Client;
+use crate::error::Error;
+use crate::map::Map;
 use serde::Deserialize;
 
 #[derive(Debug, Default)]
@@ -10,20 +10,20 @@ pub struct RequestOptions {
 
     /// Useless if `complete_base` is `true`.
     /// Default is `CardType::AeroWintem`.
-    pub card_type: Option<CardType>,
+    pub card_type: Option<CardTypeOption>,
 
     /// Useless if `card_type` is `CardType::AeroTemsi`.
     /// Default is `Altitude::FL100`.
     /// Useless if `complete_base` is `true`.
-    pub altitude: Option<Altitude>,
+    pub altitude: Option<LevelOption>,
 
     /// Useless if `complete_base` is `true`.
     /// Default is `Zone::France`.
-    pub zone: Option<Zone>,
+    pub zone: Option<ZoneOption>,
 }
 
 #[derive(Debug, Default, strum::Display)]
-pub enum CardType {
+pub enum CardTypeOption {
     #[default]
     #[strum(serialize = "AERO_WINTEM")]
     AeroWintem,
@@ -32,7 +32,7 @@ pub enum CardType {
 }
 
 #[derive(Debug, Default, strum::Display)]
-pub enum Altitude {
+pub enum LevelOption {
     #[strum(serialize = "020")]
     FL020,
     #[strum(serialize = "050")]
@@ -73,7 +73,7 @@ pub enum Altitude {
 }
 
 #[derive(Debug, Default, strum::Display)]
-pub enum Zone {
+pub enum ZoneOption {
     #[default]
     #[strum(serialize = "AERO_FRANCE")]
     France,
@@ -160,18 +160,18 @@ pub enum Zone {
 }
 
 #[derive(Debug, Deserialize)]
-pub struct Cartes {
+pub struct Maps {
     #[serde(default, rename = "bloc_zone")]
-    pub zones: Vec<BlocZone>,
+    pub zones: Vec<Zone>,
 }
 
-impl Cartes {
+impl Maps {
     /// Retrieves a list of aeronautical maps (TEMSI et WINTEM).
     ///
     /// # Errors
     ///
     /// Returns an error if the request fails or the XML cannot be parsed.
-    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Cartes, Aeroweb> {
+    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Maps, Error> {
         let type_donnees = "CARTES";
         let params = if options.complete_base {
             "BASE_COMPLETE=oui".to_string()
@@ -190,7 +190,7 @@ impl Cartes {
             .send()
             .await?;
 
-        Cartes::parse(&res.text().await?)
+        Maps::parse(&res.text().await?)
     }
 
     /// Parses the XML string into a `Cartes` struct.
@@ -200,50 +200,23 @@ impl Cartes {
     ///
     /// Returns an error if the XML string cannot be parsed.
     ///
-    fn parse(xml: &str) -> Result<Cartes, Aeroweb> {
+    fn parse(xml: &str) -> Result<Maps, Error> {
         Ok(quick_xml::de::from_str(xml)?)
     }
 }
 
 #[derive(Debug, Deserialize)]
-pub struct BlocZone {
+pub struct Zone {
     /// e.g. FRANCE, EUROC
     #[serde(rename = "@idz")]
     pub id: String,
 
     /// e.g. FRANCE, EUROC
     #[serde(rename = "@nom")]
-    pub nom: String,
+    pub name: String,
 
     #[serde(default, rename = "carte")]
-    pub cartes: Vec<Carte>,
-}
-
-#[derive(Debug, Deserialize)]
-pub struct Carte {
-    /// e.g. WINTEM, TEMSI
-    pub r#type: String,
-
-    /// /// e.g. FL20-100, FL50
-    pub niveau: String,
-
-    /// e.g. EUR, ANTILLES
-    #[serde(rename = "zone_carte")]
-    pub zone: String,
-
-    /// e.g. 24 04 2024 12:00
-    pub date_run: String,
-
-    /// e.g. 24 04 2024 00:00
-    pub date_echeance: String,
-
-    /// e.g. 06 UTC
-    #[serde(rename = "echeance")]
-    pub heure_echeance: String,
-
-    /// e.g. <https://aviation.meteo.fr/...>
-    #[serde(deserialize_with = "de_option_link")]
-    pub lien: Option<String>,
+    pub maps: Vec<Map>,
 }
 
 #[cfg(test)]
@@ -251,10 +224,38 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_cartes() {
-        let data = std::fs::read_to_string("./data/cartes.xml").unwrap();
-        let res = Cartes::parse(&data);
+    fn test_maps() {
+        let data = std::fs::read_to_string("./data/maps.xml").unwrap();
+        let res = Maps::parse(&data);
 
         assert!(res.is_ok());
+
+        let data = res.unwrap();
+
+        assert_eq!(data.zones.len(), 2);
+
+        let zone = &data.zones[0];
+        assert_eq!(zone.id, "FRANCE");
+        assert_eq!(zone.name, "FRANCE");
+        assert_eq!(zone.maps.len(), 2);
+        assert_eq!(zone.maps[0].category, "WINTEM");
+        assert_eq!(zone.maps[0].level, "FL20-100");
+        assert_eq!(zone.maps[0].zone, "FRANCE");
+        assert_eq!(zone.maps[0].run_date, "23 04 2024 21:00");
+        assert_eq!(zone.maps[0].due_date, "23 04 2024 21:00");
+        assert_eq!(zone.maps[0].due_hour, "21 UTC");
+        assert!(zone.maps[0].link.is_some());
+
+        let zone2 = &data.zones[1];
+        assert_eq!(zone2.id, "EUROC");
+        assert_eq!(zone2.name, "EUROC");
+        assert_eq!(zone2.maps.len(), 8);
+        assert_eq!(zone2.maps[0].category, "WINTEM");
+        assert_eq!(zone2.maps[0].level, "FL50-100");
+        assert_eq!(zone2.maps[0].zone, "EUROC");
+        assert_eq!(zone2.maps[0].run_date, "24 04 2024 00:00");
+        assert_eq!(zone2.maps[0].due_date, "24 04 2024 00:00");
+        assert_eq!(zone2.maps[0].due_hour, "00 UTC");
+        assert!(zone2.maps[0].link.is_some());
     }
 }

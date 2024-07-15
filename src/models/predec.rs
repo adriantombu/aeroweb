@@ -1,16 +1,16 @@
-use crate::error::Aeroweb;
-use crate::models::helpers::de_option_string;
-use crate::types::client::Client;
+use crate::client::Client;
+use crate::error::Error;
+use crate::oaci::Oaci;
 use serde::Deserialize;
 
 #[derive(Debug)]
 pub struct RequestOptions {
     /// List of OACI codes of airports emitting PREDEC
-    pub airports: Vec<RequestAirport>,
+    pub airports: Vec<AirportOption>,
 }
 
 #[derive(Debug, strum::Display)]
-pub enum RequestAirport {
+pub enum AirportOption {
     /// CDG
     LFPG,
     /// Orly
@@ -32,7 +32,7 @@ pub enum RequestAirport {
 #[derive(Debug, Deserialize)]
 pub struct Predec {
     #[serde(default, rename = "messages")]
-    pub airports: Vec<Airport>,
+    pub reports: Vec<Oaci>,
 }
 
 impl Predec {
@@ -43,9 +43,9 @@ impl Predec {
     ///
     /// Returns an error if the request fails or the XML cannot be parsed.
     ///
-    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Predec, Aeroweb> {
+    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Predec, Error> {
         if options.airports.is_empty() {
-            return Err(Aeroweb::InvalidOptions(
+            return Err(Error::InvalidOptions(
                 "RequestOptions.airports must be between 1 and 50".to_string(),
             ));
         }
@@ -76,37 +76,9 @@ impl Predec {
     ///
     /// Returns an error if the XML string cannot be parsed.
     ///
-    fn parse(xml: &str) -> Result<Predec, Aeroweb> {
+    fn parse(xml: &str) -> Result<Predec, Error> {
         Ok(quick_xml::de::from_str(xml)?)
     }
-}
-
-#[derive(Debug, Deserialize)]
-pub struct Airport {
-    /// e.g. LFBO, LFBA
-    #[serde(rename = "@oaci")]
-    pub oaci: String,
-
-    /// e.g. TOULOUSE BLAGNAC, AGEN LA GARENNE
-    #[serde(rename = "@nom")]
-    pub nom: String,
-
-    pub message: Message,
-}
-
-#[derive(Debug, Deserialize)]
-pub struct Message {
-    /// e.g. PREDEC
-    #[serde(rename = "@type")]
-    pub r#type: String,
-
-    /// e.g. 20240620210000
-    #[serde(rename = "@date_reception", deserialize_with = "de_option_string")]
-    pub date_reception: Option<String>,
-
-    /// e.g. LFBZ AD WRNG 2 VALID 252200/260000 CNL AD WRNG 1 251900/260000=
-    #[serde(default, deserialize_with = "de_option_string")]
-    pub texte: Option<String>,
 }
 
 #[cfg(test)]
@@ -114,10 +86,41 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_dossier() {
+    fn test_predec() {
         let data = std::fs::read_to_string("./data/predec.xml").unwrap();
         let res = Predec::parse(&data);
 
         assert!(res.is_ok());
+
+        let data = res.unwrap();
+
+        assert_eq!(data.reports.len(), 5);
+
+        let report = &data.reports[0];
+        assert_eq!(report.oaci, "LFPO");
+        assert_eq!(report.name, "PARIS ORLY");
+        assert_eq!(report.message.category, String::from("PREDEC"));
+        assert_eq!(
+            report.message.reception_date,
+            Some(String::from("20240423201500"))
+        );
+        assert!(report.message.text.is_some());
+
+        let report2 = &data.reports[1];
+        assert_eq!(report2.oaci, "LFPG");
+        assert_eq!(report2.name, "PARIS CHARLES DE GAULLE");
+        assert_eq!(report2.message.category, String::from("PREDEC"));
+        assert_eq!(
+            report2.message.reception_date,
+            Some(String::from("20240423201500"))
+        );
+        assert!(report2.message.text.is_some());
+
+        let report3 = &data.reports[2];
+        assert_eq!(report3.oaci, "SOCA");
+        assert_eq!(report3.name, "CAYENNE FELIX EBOUE");
+        assert_eq!(report3.message.category, String::from("PREDEC"));
+        assert!(report3.message.reception_date.is_none());
+        assert!(report3.message.text.is_none());
     }
 }

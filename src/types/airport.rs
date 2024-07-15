@@ -20,7 +20,7 @@
 ///
 /// copy(JSON.stringify(res))
 /// ```
-pub enum OaciAirport {
+pub enum Airport {
     /// Ambérieu-en-Bugey Air Base (BA 278)
     LFXA,
     /// Bellegarde - Vouvray

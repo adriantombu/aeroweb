@@ -1,7 +1,7 @@
-use crate::error::Aeroweb;
-use crate::models::helpers::de_option_string;
-use crate::types::client::Client;
-use crate::types::oaci_airport::OaciAirport;
+use crate::airport::Airport;
+use crate::client::Client;
+use crate::error::Error;
+use crate::helpers::de_option_string;
 use serde::Deserialize;
 
 #[derive(Debug)]
@@ -9,13 +9,13 @@ pub struct RequestOptions {
     /// List of OACI codes of the airports
     /// e.g. `OaciAirport::LFBO`, `OaciAirport::LFBA`
     /// Maximum 50 airports
-    pub airports: Vec<OaciAirport>,
+    pub airports: Vec<Airport>,
 }
 
 #[derive(Debug, Deserialize)]
 pub struct Opmet {
     #[serde(default, rename = "opmet")]
-    pub airports: Vec<Airport>,
+    pub reports: Vec<Data>,
 }
 
 impl Opmet {
@@ -25,9 +25,9 @@ impl Opmet {
     ///
     /// Returns an error if the request fails or the XML cannot be parsed.
     ///
-    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Opmet, Aeroweb> {
+    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Opmet, Error> {
         if options.airports.is_empty() || options.airports.len() > 50 {
-            return Err(Aeroweb::InvalidOptions(
+            return Err(Error::InvalidOptions(
                 "RequestOptions.airports must be between 1 and 50".to_string(),
             ));
         }
@@ -59,20 +59,20 @@ impl Opmet {
     ///
     /// Returns an error if the XML string cannot be parsed.
     ///
-    fn parse(xml: &str) -> Result<Opmet, Aeroweb> {
+    fn parse(xml: &str) -> Result<Opmet, Error> {
         Ok(quick_xml::de::from_str(xml)?)
     }
 }
 
 #[derive(Debug, Deserialize)]
-pub struct Airport {
+pub struct Data {
     /// e.g. LFBO, LFBA
     #[serde(rename = "@oaci")]
     pub oaci: String,
 
     /// e.g. TOULOUSE BLAGNAC, AGEN LA GARENNE
     #[serde(rename = "@nom")]
-    pub nom: String,
+    pub name: String,
 
     #[serde(rename = "METAR", deserialize_with = "de_option_string")]
     pub metar: Option<String>,
@@ -98,10 +98,34 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_dossier() {
+    fn test_opmet() {
         let data = std::fs::read_to_string("./data/opmet2.xml").unwrap();
         let res = Opmet::parse(&data);
 
         assert!(res.is_ok());
+
+        let data = res.unwrap();
+
+        assert_eq!(data.reports.len(), 2);
+
+        let report = &data.reports[0];
+        assert_eq!(report.oaci, "LFBO");
+        assert_eq!(report.name, "TOULOUSE BLAGNAC");
+        assert!(report.metar.is_some());
+        assert!(report.taf.is_some());
+        assert!(report.speci.is_none());
+        assert!(report.sigmet.is_some());
+        assert!(report.gamet.is_none());
+        assert!(report.airmet.is_none());
+
+        let report2 = &data.reports[1];
+        assert_eq!(report2.oaci, "LFBA");
+        assert_eq!(report2.name, "AGEN LA GARENNE");
+        assert!(report2.metar.is_some());
+        assert!(report2.taf.is_some());
+        assert!(report2.speci.is_none());
+        assert!(report2.sigmet.is_some());
+        assert!(report2.gamet.is_none());
+        assert!(report2.airmet.is_none());
     }
 }

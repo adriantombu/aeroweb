@@ -1,8 +1,31 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <groupe>
+    <messages oaci="LFLY" nom="LYON BRON">
+        <message type="MAA" date_reception="20240715124000">
+            <texte><![CDATA[LFLY AD WRNG 2 VALID 151500/152000
+TS FCST.=]]></texte>
+        </message>
+        <message type="MAA" date_reception="20240715124000">
+            <texte><![CDATA[LFLY AD WRNG 4 VALID 151500/151800
+SFC WSPD MAX >= 80 KM/H FCST.=]]></texte>
+        </message>
+        <message type="MAA" date_reception="20240715124000">
+            <texte><![CDATA[LFLY AD WRNG 3 VALID 151500/151800
+GR FCST.=]]></texte>
+        </message>
+    </messages>
     <messages oaci="LFPG" nom="PARIS CHARLES DE GAULLE">
-        <message type='MAA' date_reception='NIL'>
-            <texte><![CDATA[NIL]]></texte>
+        <message type="MAA" date_reception="20240715104200">
+            <texte><![CDATA[LFPG AD WRNG 3 VALID 151230/160030
+SFC WSPD MAX >= 25 KT FCST.=]]></texte>
+        </message>
+        <message type="MAA" date_reception="20240715104100">
+            <texte><![CDATA[LFPG AD WRNG 2 VALID 151230/151830
+GR FCST.=]]></texte>
+        </message>
+        <message type="MAA" date_reception="20240715093400">
+            <texte><![CDATA[LFPG AD WRNG 1 VALID 151130/152030
+TS FCST.=]]></texte>
         </message>
     </messages>
     <messages oaci="LFBO" nom="TOULOUSE BLAGNAC">
@@ -11,6 +34,11 @@
         </message>
     </messages>
     <messages oaci="LFBA" nom="AGEN LA GARENNE">
+        <message type='MAA' date_reception='NIL'>
+            <texte><![CDATA[NIL]]></texte>
+        </message>
+    </messages>
+    <messages oaci="LFLW" nom="AURILLAC">
         <message type='MAA' date_reception='NIL'>
             <texte><![CDATA[NIL]]></texte>
         </message>
