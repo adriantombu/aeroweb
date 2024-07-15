@@ -1,5 +1,3 @@
-use crate::client::Client;
-use crate::error::Error;
 use crate::map::Map;
 use serde::Deserialize;
 
@@ -165,46 +163,6 @@ pub struct Maps {
     pub zones: Vec<Zone>,
 }
 
-impl Maps {
-    /// Retrieves a list of aeronautical maps (TEMSI et WINTEM).
-    ///
-    /// # Errors
-    ///
-    /// Returns an error if the request fails or the XML cannot be parsed.
-    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Maps, Error> {
-        let type_donnees = "CARTES";
-        let params = if options.complete_base {
-            "BASE_COMPLETE=oui".to_string()
-        } else {
-            format!(
-                "BASE_COMPLETE=non&VUE_CARTE={}&ALTITUDE={}&ZONE={}",
-                options.card_type.unwrap_or_default(),
-                options.altitude.unwrap_or_default(),
-                options.zone.unwrap_or_default()
-            )
-        };
-
-        let res = client
-            .http_client
-            .get(client.get_url(type_donnees, &params))
-            .send()
-            .await?;
-
-        Maps::parse(&res.text().await?)
-    }
-
-    /// Parses the XML string into a `Cartes` struct.
-    /// Definition file : <https://aviation.meteo.fr/FR/aviation/XSD/cartes.xsd>
-    ///
-    /// # Errors
-    ///
-    /// Returns an error if the XML string cannot be parsed.
-    ///
-    fn parse(xml: &str) -> Result<Maps, Error> {
-        Ok(quick_xml::de::from_str(xml)?)
-    }
-}
-
 #[derive(Debug, Deserialize)]
 pub struct Zone {
     /// e.g. FRANCE, EUROC
@@ -222,15 +180,16 @@ pub struct Zone {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::helpers::parse;
 
     #[test]
     fn test_maps() {
         let data = std::fs::read_to_string("./data/maps.xml").unwrap();
-        let res = Maps::parse(&data);
+        let res = parse(&data);
 
         assert!(res.is_ok());
 
-        let data = res.unwrap();
+        let data: Maps = res.unwrap();
 
         assert_eq!(data.zones.len(), 2);
 

@@ -1,5 +1,3 @@
-use crate::client::Client;
-use crate::error::Error;
 use crate::oaci::Oaci;
 use serde::Deserialize;
 
@@ -35,64 +33,19 @@ pub struct Predec {
     pub reports: Vec<Oaci>,
 }
 
-impl Predec {
-    /// Retrieves PREDECs (`PREvision DECollage`).
-    /// Definition file : <https://aviation.meteo.fr/FR/aviation/XSD/predec.xsd>
-    ///
-    /// # Errors
-    ///
-    /// Returns an error if the request fails or the XML cannot be parsed.
-    ///
-    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Predec, Error> {
-        if options.airports.is_empty() {
-            return Err(Error::InvalidOptions(
-                "RequestOptions.airports must be between 1 and 50".to_string(),
-            ));
-        }
-
-        let type_donnees = "PREDEC";
-        let params = format!(
-            "LIEUID={}",
-            options
-                .airports
-                .iter()
-                .map(std::string::ToString::to_string)
-                .collect::<Vec<_>>()
-                .join("|")
-        );
-
-        let res = client
-            .http_client
-            .get(client.get_url(type_donnees, &params))
-            .send()
-            .await?;
-
-        Predec::parse(&res.text().await?)
-    }
-
-    /// Parses the XML string into a `Predec` struct.
-    ///
-    /// # Errors
-    ///
-    /// Returns an error if the XML string cannot be parsed.
-    ///
-    fn parse(xml: &str) -> Result<Predec, Error> {
-        Ok(quick_xml::de::from_str(xml)?)
-    }
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::helpers::parse;
 
     #[test]
     fn test_predec() {
         let data = std::fs::read_to_string("./data/predec.xml").unwrap();
-        let res = Predec::parse(&data);
+        let res = parse(&data);
 
         assert!(res.is_ok());
 
-        let data = res.unwrap();
+        let data: Predec = res.unwrap();
 
         assert_eq!(data.reports.len(), 5);
 

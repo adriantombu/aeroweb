@@ -1,6 +1,4 @@
 use crate::center::Center;
-use crate::client::Client;
-use crate::error::Error;
 use crate::helpers::{de_option_link, de_option_string};
 use crate::map::Map;
 use serde::Deserialize;
@@ -224,38 +222,6 @@ pub struct FlightPlan {
     pub tcags: Vec<Center>,
 }
 
-impl FlightPlan {
-    /// Retrieves pre-established flight plans
-    /// Definition file : <https://aviation.meteo.fr/FR/aviation/XSD/dossier.xsd>
-    ///
-    /// # Errors
-    ///
-    /// Returns an error if the request fails or the XML cannot be parsed.
-    ///
-    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<FlightPlan, Error> {
-        let type_donnees = "DOSSIER";
-        let params = format!("DESTINATION={}", options.destination.unwrap_or_default());
-
-        let res = client
-            .http_client
-            .get(client.get_url(type_donnees, &params))
-            .send()
-            .await?;
-
-        FlightPlan::parse(&res.text().await?)
-    }
-
-    /// Parses the XML string into a `Dossier` struct.
-    ///
-    /// # Errors
-    ///
-    /// Returns an error if the XML string cannot be parsed.
-    ///
-    fn parse(xml: &str) -> Result<FlightPlan, Error> {
-        Ok(quick_xml::de::from_str(xml)?)
-    }
-}
-
 #[derive(Debug, Deserialize)]
 pub struct Message {
     /// e.g. METAR, TAFL
@@ -278,15 +244,16 @@ pub struct Message {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::helpers::parse;
 
     #[test]
     fn test_flight_plan() {
         let data = std::fs::read_to_string("./data/flight_plan.xml").unwrap();
-        let res = FlightPlan::parse(&data);
+        let res = parse(&data);
 
         assert!(res.is_ok());
 
-        let data = res.unwrap();
+        let data: FlightPlan = res.unwrap();
 
         assert_eq!(data.name, "GRAND SUD OUEST FRANCE");
         assert!(data.link.is_some());

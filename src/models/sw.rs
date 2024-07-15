@@ -1,5 +1,3 @@
-use crate::client::Client;
-use crate::error::Error;
 use crate::helpers::de_option_string;
 use serde::Deserialize;
 
@@ -7,37 +5,6 @@ use serde::Deserialize;
 pub struct SpaceWeather {
     #[serde(default, rename = "SPACEWEATHER")]
     pub reports: Vec<Data>,
-}
-
-impl SpaceWeather {
-    /// Retrieves Space Weather Advisories
-    /// Space weather is advisory information on space weather phenomena expected to affect high-frequency radio communications, satellite communications, and GNSS-based navigation and surveillance systems, or will create a radiation hazard to aircraft occupants.
-    ///
-    /// # Errors
-    ///
-    /// Returns an error if the request fails or the XML cannot be parsed.
-    ///
-    pub async fn fetch(client: &Client) -> Result<SpaceWeather, Error> {
-        let type_donnees = "SW";
-        let params = "";
-
-        let res = client
-            .http_client
-            .get(client.get_url(type_donnees, params))
-            .send()
-            .await?;
-
-        SpaceWeather::parse(&res.text().await?)
-    }
-    /// Parses the XML string into a `SpaceWeather` struct.
-    ///
-    /// # Errors
-    ///
-    /// Returns an error if the XML string cannot be parsed.
-    ///
-    fn parse(xml: &str) -> Result<SpaceWeather, Error> {
-        Ok(quick_xml::de::from_str(xml)?)
-    }
 }
 
 #[derive(Debug, Deserialize)]
@@ -58,15 +25,16 @@ pub struct Data {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::helpers::parse;
 
     #[test]
     fn test_sw() {
         let data = std::fs::read_to_string("./data/sw.xml").unwrap();
-        let res = SpaceWeather::parse(&data);
+        let res = parse(&data);
 
         assert!(res.is_ok());
 
-        let data = res.unwrap();
+        let data: SpaceWeather = res.unwrap();
 
         assert_eq!(data.reports.len(), 7);
 

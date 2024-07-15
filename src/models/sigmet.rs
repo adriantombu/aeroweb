@@ -1,6 +1,4 @@
 use crate::airport::Airport;
-use crate::client::Client;
-use crate::error::Error;
 use crate::fir::Fir;
 use crate::helpers::de_option_string;
 use serde::Deserialize;
@@ -21,61 +19,6 @@ pub struct RequestOptions {
 pub struct Sigmet {
     #[serde(default, rename = "FIR")]
     pub reports: Vec<Data>,
-}
-
-impl Sigmet {
-    /// Retrieves SIGMETs and/or AIRMETs and/or GAMETs for a list of FIR and/or airports
-    /// Note: SIGMETs will always be delivered for each call to retrieve METARs or TAFs
-    // Definition file : https://aviation.meteo.fr/FR/aviation/XSD/sigmet.xsd
-    /// # Errors
-    ///
-    /// Returns an error if the request fails or the XML cannot be parsed.
-    ///
-    pub async fn fetch(client: &Client, options: RequestOptions) -> Result<Sigmet, Error> {
-        if (options.airports.is_empty() && options.firs.is_empty())
-            || (options.airports.len() + options.firs.len() > 50)
-        {
-            return Err(Error::InvalidOptions(
-                "RequestOptions.airports and RequestOptions.first must be between 1 and 50 combined".to_string(),
-            ));
-        }
-
-        let places = {
-            let mut airports = options
-                .airports
-                .iter()
-                .map(std::string::ToString::to_string)
-                .collect::<Vec<_>>();
-            let mut firs = options
-                .firs
-                .iter()
-                .map(std::string::ToString::to_string)
-                .collect::<Vec<_>>();
-
-            airports.append(&mut firs);
-            airports
-        };
-        let type_donnees = "SIGMET2";
-        let params = format!("LIEUID={}", places.join("|"));
-
-        let res = client
-            .http_client
-            .get(client.get_url(type_donnees, &params))
-            .send()
-            .await?;
-
-        Sigmet::parse(&res.text().await?)
-    }
-
-    /// Parses the XML string into a `Sigmet` struct.
-    ///
-    /// # Errors
-    ///
-    /// Returns an error if the XML string cannot be parsed.
-    ///
-    fn parse(xml: &str) -> Result<Sigmet, Error> {
-        Ok(quick_xml::de::from_str(xml)?)
-    }
 }
 
 #[derive(Debug, Deserialize)]
@@ -101,15 +44,16 @@ pub struct Data {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::helpers::parse;
 
     #[test]
     fn test_sigmet() {
         let data = std::fs::read_to_string("./data/sigmet2.xml").unwrap();
-        let res = Sigmet::parse(&data);
+        let res = parse(&data);
 
         assert!(res.is_ok());
 
-        let data = res.unwrap();
+        let data: Sigmet = res.unwrap();
 
         assert_eq!(data.reports.len(), 4);
 
